@@ -15,9 +15,9 @@ tags: Android, GTM, Analytics, Google Analytics, Google Tag Manager
 
 &nbsp;  
 
-```
+~~~
 Note: During the course of this article I will be showing real ids and values, this is to help you see what values are important and where they go. They will all be long deleted before you read them.
-```
+~~~
 
 &nbsp;
 
@@ -37,9 +37,9 @@ There are three core benefits of GTM:
 
 &nbsp;  
 
-```
+~~~
 Tip: If you only want a limited set of tracking to start, build the clients to track everything within reason. Then you can limit the tracking at the GTM layer. Which means GTM can be changed to send it through when people inevitably change their minds. No code changes or client launches required!
-```
+~~~
 
 &nbsp;
 
@@ -55,9 +55,9 @@ GTM has only three core elements we need to understand. **The Container**, **The
 
 &nbsp;  
 
-```
+~~~
 Just repeating myself: This section will be an overview, my aim here is to show you what everything looks like and what to expect. We will go into more depth later in the context of setting up some tracking in an example client.
-```
+~~~
 
 &nbsp;
 
@@ -72,12 +72,12 @@ Each client holds onto a version of the container which it will update periodica
 
 &nbsp;
 
-```
+~~~
 The exact update logic is: 
 WHEN a client is launched
 IF it has been more than 24 hours since the list time it checked
 THEN check and update the container
-```
+~~~
 
 &nbsp;
 
@@ -131,9 +131,9 @@ The side bar will only be visible in the **Container Tab**, it is however someth
 
 &nbsp;
 
-```
+~~~
 Search, Overview and Folders are not relevant to the content of this article, they are a discussion for another time.
-```
+~~~
 
 &nbsp;
 
@@ -167,9 +167,9 @@ In our example we will just deal with a single Google Analytics account. GA is w
 
 &nbsp;
 
-```
+~~~
 A quick note on talking to GA in real-time: A real-time event is visible in GA for 30 minutes before it leaves. After that 30 minutes the event is not viewable until 24 hours later when it appears as part of the daily reports and figures. This is just how GA works as it needs to run processing etc on all the daily figures to generate meaningful reports and statistics.
-```
+~~~
 
 &nbsp;
 
@@ -208,9 +208,9 @@ I have gone ahead and stuck "Example" as my account name. You however might want
 
 &nbsp;
 
-```
+~~~
 While you definitely can have one GTM container that handles multiple clients (of the same platform), it is generally considered poor practice. You most likely never want a single out of the box analytics experience. If you have two apps that are very similar consider copying the container (I will discuss how to do this later) and making modifications per specific client. 
-```
+~~~
 
 &nbsp;
 
@@ -366,7 +366,7 @@ So for now, lets create a **Constant** for our tracking id:
 
 Up the top we name our variable. This will be how we refer to it later. Remember in most analytics solutions you will have a lot of variables, so you may want to define some sort of convention to make the list easier to navigate in future.
 
-Then in the value field we put in our tracking id. That means now, whenever I use this variable via the syntax `{{GA - Tracking ID}}` I am actually referencing my id!
+Then in the value field we put in our tracking id. That means now, whenever I use this variable via the syntax `{% raw %}{{GA - Tracking ID}}{% endraw %}` I am actually referencing my id!
 
 When we click **Create Variable** we will see our new constant in the **User-Defined Variables** section. If we ever want to update the name, or value or even type we can by simply clicking on it.
 
@@ -386,9 +386,9 @@ Well now we know how to create variables and what the two key types are, lets ma
 
 &nbsp;
 
-```
+~~~
 You probably noticed a lot of these examples are for screen elements that aren't necessarily buttons. I never said I was going to do ONLY buttons with a single tag did I? 
-```
+~~~
 
 &nbsp;
 
@@ -400,7 +400,7 @@ So here are our new variables:
 
 &nbsp;
 
-You'll notice they are slightly different than our constant. Obviously we don't want to see **screenName** whenever we type `{{Data - Common - ScreenName}}` and the same would go for all the other variables. In this case however this "value" is actually the key the client uses to assign a real value to that field. So in our client somewhere we will map **screenName** with whatever we decide to name our screen. We also have the option to set a default value for these variables, in our cases we don't really need a default screen name or click target so I have opted to leave them out (In the case of click value it could make sense but I have opted for another way for simplicity).
+You'll notice they are slightly different than our constant. Obviously we don't want to see **screenName** whenever we type `{% raw %}{{Data - Common - ScreenName}}{% endraw %}` and the same would go for all the other variables. In this case however this "value" is actually the key the client uses to assign a real value to that field. So in our client somewhere we will map **screenName** with whatever we decide to name our screen. We also have the option to set a default value for these variables, in our cases we don't really need a default screen name or click target so I have opted to leave them out (In the case of click value it could make sense but I have opted for another way for simplicity).
 
 &nbsp;
 
@@ -444,9 +444,9 @@ Notice the **Event** variable. We haven't seen this guy yet. As I mentioned in t
 
 &nbsp;
 
-```
+~~~
 If you have your smart pants on today you are probably thinking to yourself that "pageView" would be perfect for a constant. And you would be right! This is just one of the many more values we will encounter that would be constants in the real world but I am leaving as their actual values here for simplicities sake.
-```
+~~~
 &nbsp;
 
 Now when we click **Create Trigger** we will see our brand new Trigger ready to go. 
@@ -516,9 +516,9 @@ Our dialog here is pretty simple. We can attach as many triggers as we want. In 
 
 &nbsp;
 
-```
+~~~
 Note: A tag will activate if any one of its attached triggers fires. Attaching multiple triggers does not mean your tag holds out until all triggers are true. There is no support for this, you would need to make a third trigger with all the constraints of the other two. However if more than one trigger is true in a single event, your tag will still only fire the once.
-```
+~~~
 
 &nbsp;
 
@@ -650,9 +650,9 @@ Running GTM in an app can be extraordinarily simple, it can also present quite a
 
 Probably the easiest part of the whole process. You just need to add the following line to your **build.gradle**.
 
-```
+~~~
 compile "com.google.android.gms:play-services-analytics:7.8.0"
-```
+~~~
 
 If you already have the whole play services bundle compiling then don't bother with this line, you're already set up.
 
@@ -688,15 +688,15 @@ This also solves our second point, as we can now provide that same tagging insta
 
 So in our application's onCreate we have:
 
-```
+~~~
 TagManager tagManager = getTagManager();
-
+    
 mComponent = DaggerGTMAppApplicationComponent.builder()
                 .appModule(new AppModule(this, tagManager))
                 .networkModule(new NetworkModule())
                 .build();
+~~~
 
-```
 &nbsp;
 
 So as you can see we have bundled up all our TagManager creation in this `getTagManager()` method. Then we provide this to our module. This module can then create a `@Provides` method for our TagManager. Done! 
@@ -705,18 +705,18 @@ So as you can see we have bundled up all our TagManager creation in this `getTag
 
 But lets take a peek at `getTagManager()` shall we?
 
-```
+~~~
 protected TagManager getTagManager() {
     TagManager tagManager = TagManager.getInstance(this);
-
+    
     int id = getResources().getIdentifier(BuildConfig.GTM_BINARY_NAME, "raw", getPackageName());
-
+    
     tagManager.loadContainerPreferFresh(BuildConfig.GTM_CONTAINER_ID, id);
 
     return tagManager;
 }
 
-```
+~~~
 
 &nbsp;
 
@@ -744,14 +744,14 @@ Once we do this we load our default container using another BuildConfig field. T
 
 So these two values will be sitting in our build.gradle like this:
 
-```
+~~~
 prod {
    ...
    buildConfigField "String", "GTM_CONTAINER_ID", "GTM-MZRKNH"
    buildConfigField "String", "GTM_BINARY_NAME", "gtm_mzrknh_v1"
    ...
 }
-```
+~~~
 
 &nbsp;
 
@@ -761,12 +761,12 @@ Note also the format of our binary file name. GTM provides the file as "GTM-MZRK
 
 Now what would this method look like in our TestGTMApp?
 
-```
+~~~
 @Override
 protected TagManager getTagManager() {
     return Mockito.mock(TagManager.class, Mockito.RETURNS_MOCKS);
 }
-```
+~~~
 &nbsp;
 
 Quite a lot simpler. We are just returning a fake TagManager that will not give us errors when used. Note also we use the `RETURNS_MOCKS` option. This is because when we go to use our TagManager later we will need to access some objects within the TagManager that we also want mocked.
@@ -783,7 +783,7 @@ The last step where we have to do something! Once this is set up we can sit back
 
 Lets check out our page tracking method.
 
-```
+~~~
 @Inject TagManager mTagManager;
 
 protected abstract String getName();
@@ -792,7 +792,7 @@ protected final void trackPage() {
     String name = getName();
     mTagManager.getDataLayer().pushEvent("pageView", DataLayer.mapOf("screenName", name));
 }
-```
+~~~
 &nbsp;
 
 So what is going on here? Not much at all really. We are fetching the name for our page via `getName()` which will be implemented by all subclasses of our base presenter (Ensuring we have a unique name). We are then fetching the data layer of our TagManager and pushing through a "pageView" event. 
@@ -809,7 +809,7 @@ That is it! Now whenever our presenter is created we can call `trackPage()` and 
 
 &nbsp;
 
-```
+~~~
 @Inject TagManager mTagManager;
 
 protected abstract String getName();
@@ -823,7 +823,7 @@ protected final void trackPage() {
 protected boolean shouldTrackPage() {
     return true;
 }
-```
+~~~
 
 &nbsp;
 
@@ -835,7 +835,7 @@ Note they sill need a name, I have found this is useful for debugging, and also 
 
 Now lets look at click tracking:
 
-```
+~~~
 // Everything we had above
 
 protected final void trackClick(String clickTarget, String clickValue) {
@@ -845,7 +845,7 @@ protected final void trackClick(String clickTarget, String clickValue) {
             "clickValue", clickValue
     ));
 }
-```
+~~~
 
 &nbsp;
 
@@ -855,7 +855,7 @@ What we see is very similar to our page view above. Note again I have left out t
 
 Lets add in another method.
 
-```
+~~~
 // Everything we had above
 
 protected final void trackClick(String clickTarget) {
@@ -869,7 +869,7 @@ protected final void trackClick(String clickTarget, String clickValue) {
             GTM_KEY_CLICK_VALUE, clickValue
     ));
 }
-```
+~~~
 &nbsp;
 
 This time we have two methods, one doing the tracking and one providing a default `clickValue` in the case we don't have one. Much more clean, now we can call either method depending on if we have a value to pass or not.
