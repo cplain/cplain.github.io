@@ -3,6 +3,7 @@ layout: post
 title: Google Tag Manager
 subtitle: The platform where the tagline is included
 tags: Android, GTM, Analytics, Google Analytics, Google Tag Manager
+author: Coby Plain
 ---
 
 ---
@@ -927,10 +928,6 @@ So with very little code and very little effort we have a powerful, flexible ana
 But hopefully for now this article has you equipped to handle the basics and use this new insight to better your products and brands. And as you push ahead with this new platform you can grow your skills and step bravely into deeper waters!
 
 Good luck
-
-&nbsp;
-
-**Coby Plain - 26 August 2015**
 
 [GTM]: https://tagmanager.google.com/
 [GTM v4]: https://developers.google.com/tag-manager/android/v4/
