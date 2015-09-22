@@ -5,7 +5,7 @@
 
 
 
-// Our variables
+// Standard Page variables
 $base-font-family: Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
@@ -16,10 +16,13 @@ $spacing-unit:     30px;
 $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
+$link-color:      #0069d6;
+$link-color-hover:      #0050a3;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
+
 
 // Width of the content area
 $content-width:    800px;
