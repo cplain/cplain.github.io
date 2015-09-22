@@ -84,6 +84,7 @@
     border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
 }
+
 .footer-heading {
     font-size: 18px;
     margin-bottom: $spacing-unit / 2;
@@ -126,6 +127,7 @@
     / 2));
 }
 .footer-col-3 {
+    float: right;
     width:-webkit-calc(45% - (# {
         $spacing-unit
     }
