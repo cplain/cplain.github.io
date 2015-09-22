@@ -6,6 +6,8 @@ tags: Android GTM Analytics Google_Analytics Google_Tag_Manager
 author: Coby Plain
 ---
 
+{% assign res = "/assets/2015-09-21-google-tag-manager" %}
+
 ---
 
 ## Overview
@@ -86,7 +88,7 @@ We edit our container via the [GTM web portal][GTM]. We will go over each sectio
 
 &nbsp;
 
-![Container](/assets/gtm/container_overview.png)
+![Container]({{res}}/container_overview.png)
 
 &nbsp;
 
@@ -98,7 +100,7 @@ This is a brand new container so there isn't anything of real interest happening
 
 &nbsp;
 
-![Container Top](/assets/gtm/container_top.png)
+![Container Top]({{res}}/container_top.png)
 
 &nbsp;
 
@@ -124,7 +126,7 @@ I am calling this the tab bar even though it is more of a composite navigational
 
 &nbsp;
 
-![Container Side](/assets/gtm/container_side.png)
+![Container Side]({{res}}/container_side.png)
 
 &nbsp;
 
@@ -201,7 +203,7 @@ Step one is acquiring ourselves a GTM container to work with. Log into [https://
 
 &nbsp;
 
-![New Container Step 1](/assets/gtm/new_container_1.png)
+![New Container Step 1]({{res}}/new_container_1.png)
 
 &nbsp;
 
@@ -219,7 +221,7 @@ Once you hit continue you have your account. Now we can set up a container!
 
 &nbsp;
 
-![New Container Step 2](/assets/gtm/new_container_2.png)
+![New Container Step 2]({{res}}/new_container_2.png)
 
 &nbsp;
 
@@ -229,7 +231,7 @@ Once you click create you will see this screen:
 
 &nbsp;
 
-![New Container Step 3](/assets/gtm/new_container_3.png)
+![New Container Step 3]({{res}}/new_container_3.png)
 
 &nbsp;
 
@@ -241,7 +243,7 @@ If you ever want to create another account you can in the **Accounts Tab** by cl
 
 &nbsp;
 
-![New Container Step 4](/assets/gtm/new_container_4.png)
+![New Container Step 4]({{res}}/new_container_4.png)
 
 &nbsp;
 
@@ -249,7 +251,7 @@ If you want to create a new container under the same account, you can simply cli
 
 &nbsp;
 
-![New Container Step 5](/assets/gtm/new_container_5.png)
+![New Container Step 5]({{res}}/new_container_5.png)
 
 &nbsp;
 
@@ -269,7 +271,7 @@ If you have never had a GA account before you will see something like this:
 
 &nbsp;
 
-![New GA Step 1](/assets/gtm/new_ga_1.png)
+![New GA Step 1]({{res}}/new_ga_1.png)
 
 &nbsp;
 
@@ -277,7 +279,7 @@ Lets click on that big friendly sign up button!
 
 &nbsp;
 
-![New GA Step 2](/assets/gtm/new_ga_2.png)
+![New GA Step 2]({{res}}/new_ga_2.png)
 
 &nbsp;
 
@@ -287,7 +289,7 @@ Below this we will see a number of data sharing services (all helpfully pre-tick
 
 &nbsp;
 
-![New GA Step 3](/assets/gtm/new_ga_3.png)
+![New GA Step 3]({{res}}/new_ga_3.png)
 
 &nbsp;
 
@@ -295,7 +297,7 @@ Once we are all done we will see our new GA instance in all its glory. I have hi
 
 &nbsp;
 
-![New GA Step 4](/assets/gtm/new_ga_4.png)
+![New GA Step 4]({{res}}/new_ga_4.png)
 
 &nbsp;
 
@@ -303,7 +305,7 @@ You can always create another GA instance by clicking on the **Property** dropdo
 
 &nbsp;
 
-![New GA Step 5](/assets/gtm/new_ga_5.png)
+![New GA Step 5]({{res}}/new_ga_5.png)
 
 &nbsp;
 
@@ -331,7 +333,7 @@ So first lets go to the **Variables section** in GTM.
 
 &nbsp;
 
-![Variables Step 1](/assets/gtm/variables_1.png)
+![Variables Step 1]({{res}}/variables_1.png)
 
 &nbsp;
 
@@ -343,7 +345,7 @@ First we click on **New** and we are greeted with the following:
 
 &nbsp;
 
-![Variables Step 2](/assets/gtm/variables_2.png)
+![Variables Step 2]({{res}}/variables_2.png)
 
 &nbsp;
 
@@ -361,7 +363,7 @@ So for now, lets create a **Constant** for our tracking id:
 
 &nbsp;
 
-![Variables Step 3](/assets/gtm/variables_3.png)
+![Variables Step 3]({{res}}/variables_3.png)
 
 &nbsp;
 
@@ -373,7 +375,7 @@ When we click **Create Variable** we will see our new constant in the **User-Def
 
 &nbsp;
 
-![Variables Step 4](/assets/gtm/variables_4.png)
+![Variables Step 4]({{res}}/variables_4.png)
 
 &nbsp;
 
@@ -397,7 +399,7 @@ So here are our new variables:
 
 &nbsp;
 
-![Variables Step 5](/assets/gtm/variables_5.png)
+![Variables Step 5]({{res}}/variables_5.png)
 
 &nbsp;
 
@@ -413,7 +415,7 @@ So now we have our variables, but they aren't that useful right now. They just s
 
 &nbsp;
 
-![Triggers Step 1](/assets/gtm/triggers_1.png)
+![Triggers Step 1]({{res}}/triggers_1.png)
 
 &nbsp;
 
@@ -421,7 +423,7 @@ As we would expect it is also empty. So to begin lets click on **New** and make 
 
 &nbsp;
 
-![Triggers Step 2](/assets/gtm/triggers_2.png)
+![Triggers Step 2]({{res}}/triggers_2.png)
 
 &nbsp;
 
@@ -433,7 +435,7 @@ There are a few elements we have here. Up the top is the name, similar to our va
 
 &nbsp;
 
-![Triggers Step 3](/assets/gtm/triggers_3.png)
+![Triggers Step 3]({{res}}/triggers_3.png)
 
 &nbsp;
 
@@ -441,7 +443,7 @@ Notice the **Event** variable. We haven't seen this guy yet. As I mentioned in t
 
 &nbsp;
 
-![Triggers Step 4](/assets/gtm/triggers_4.png)
+![Triggers Step 4]({{res}}/triggers_4.png)
 
 &nbsp;
 
@@ -454,7 +456,7 @@ Now when we click **Create Trigger** we will see our brand new Trigger ready to 
 
 &nbsp;
 
-![Triggers Step 5](/assets/gtm/triggers_5.png)
+![Triggers Step 5]({{res}}/triggers_5.png)
 
 &nbsp;
 
@@ -462,7 +464,7 @@ We will create one more for our click event...
 
 &nbsp;
 
-![Triggers Step 6](/assets/gtm/triggers_6.png)
+![Triggers Step 6]({{res}}/triggers_6.png)
 
 &nbsp;
 
@@ -482,7 +484,7 @@ So lets get started by navigating to the **Tags section**
 
 &nbsp;
 
-![Tags Step 1](/assets/gtm/tags_1.png)
+![Tags Step 1]({{res}}/tags_1.png)
 
 &nbsp;
 
@@ -491,7 +493,7 @@ Just like before this section is empty. Lets start by clicking on **New** and cr
 
 &nbsp;
 
-![Tags Step 2](/assets/gtm/tags_2.png)
+![Tags Step 2]({{res}}/tags_2.png)
 
 &nbsp;
 
@@ -501,7 +503,7 @@ We then need to configure our tag...
 
 &nbsp;
 
-![Tags Step 3](/assets/gtm/tags_3.png)
+![Tags Step 3]({{res}}/tags_3.png)
 
 &nbsp;
 
@@ -509,7 +511,7 @@ Just like with variables and triggers, the name up the top is our own internal r
 
 &nbsp;
 
-![Tags Step 4](/assets/gtm/tags_4.png)
+![Tags Step 4]({{res}}/tags_4.png)
 
 &nbsp;
 
@@ -527,7 +529,7 @@ So lets take a look at our final tag.
 
 &nbsp;
 
-![Tags Step 5](/assets/gtm/tags_5.png)
+![Tags Step 5]({{res}}/tags_5.png)
 
 &nbsp;
 
@@ -535,7 +537,7 @@ Looks pretty good, all we need to do it click **Create Tag** and we are up and r
 
 &nbsp;
 
-![Tags Step 6](/assets/gtm/tags_6.png)
+![Tags Step 6]({{res}}/tags_6.png)
 
 &nbsp;
 
@@ -543,7 +545,7 @@ So now we have our page view tag. Lets create a tag for all the click events our
 
 &nbsp;
 
-![Tags Step 7](/assets/gtm/tags_7.png)
+![Tags Step 7]({{res}}/tags_7.png)
 
 &nbsp;
 
@@ -555,7 +557,7 @@ We can pass any data we like in these fields `with the exception of value, value
 
 &nbsp;
 
-![Tags Step 8](/assets/gtm/tags_8.png)
+![Tags Step 8]({{res}}/tags_8.png)
 
 &nbsp;
 
@@ -572,7 +574,7 @@ Lets tie this to our click trigger and hit the go button!
 
 &nbsp;
 
-![Tags Step 9](/assets/gtm/tags_9.png)
+![Tags Step 9]({{res}}/tags_9.png)
 
 &nbsp;
 
@@ -588,7 +590,7 @@ Time to click that little red button that has been watching over us this whole t
 
 &nbsp;
 
-![Publish Step 1](/assets/gtm/publish_1.png)
+![Publish Step 1]({{res}}/publish_1.png)
 
 &nbsp;
 
@@ -596,7 +598,7 @@ If you click on the dropdown you may see there are actually two options availabl
 
 &nbsp;
 
-![Publish Step 2](/assets/gtm/publish_2.png)
+![Publish Step 2]({{res}}/publish_2.png)
 
 &nbsp;
 
@@ -604,7 +606,7 @@ But for us, we just want to hit publish.
 
 &nbsp;
 
-![Publish Step 3](/assets/gtm/publish_3.png)
+![Publish Step 3]({{res}}/publish_3.png)
 
 &nbsp;
 
@@ -613,7 +615,7 @@ We will see a nice little confirmation window. We can just click **Publish Now**
 
 &nbsp;
 
-![Publish Step 4](/assets/gtm/publish_4.png)
+![Publish Step 4]({{res}}/publish_4.png)
 
 &nbsp;
 
@@ -621,7 +623,7 @@ TADA! We are done! If we go to the **Versions tab** we can see version 1 of our 
 
 &nbsp;
 
-![Publish Step 5](/assets/gtm/publish_5.png)
+![Publish Step 5]({{res}}/publish_5.png)
 
 &nbsp;
 
@@ -629,7 +631,7 @@ Our final step is to download the container file for our client. This is the fil
 
 &nbsp;
 
-![Publish Step 6](/assets/gtm/publish_6.png)
+![Publish Step 6]({{res}}/publish_6.png)
 
 &nbsp;
 
@@ -739,7 +741,7 @@ Once we do this we load our default container using another BuildConfig field. T
 
 &nbsp;
 
-![Memory Lane](/assets/gtm/container_top.png)
+![Memory Lane]({{res}}/container_top.png)
 
 &nbsp;
 
@@ -885,7 +887,7 @@ Lets check in on our GA account shall we?
 
 &nbsp;
 
-![Results 1](/assets/gtm/results_1.png)
+![Results 1]({{res}}/results_1.png)
 
 &nbsp;
 
@@ -897,7 +899,7 @@ Alright lets check out **Events**.
 
 &nbsp;
 
-![Results 2](/assets/gtm/results_2.png)
+![Results 2]({{res}}/results_2.png)
 
 &nbsp;
 
@@ -905,7 +907,7 @@ Everything we want is here too! The view is very similar. We can't see our label
 
 &nbsp;
 
-![Results 3](/assets/gtm/results_3.png)
+![Results 3]({{res}}/results_3.png)
 
 &nbsp;
 
@@ -913,7 +915,7 @@ And there you have it! Everything hooked up. And with remarkably little effort. 
 
 &nbsp;
 
-![Import 1](/assets/gtm/import_1.png)
+![Import 1]({{res}}/import_1.png)
 
 &nbsp;
 
