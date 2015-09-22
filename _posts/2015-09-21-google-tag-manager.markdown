@@ -2,7 +2,7 @@
 layout: post
 title: Google Tag Manager
 subtitle: The platform where the tagline is included
-tags: Android, GTM, Analytics, Google Analytics, Google Tag Manager
+tags: Android GTM Analytics Google_Analytics Google_Tag_Manager
 author: Coby Plain
 ---
 
