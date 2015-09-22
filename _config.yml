@@ -4,6 +4,7 @@ email: seaplain1@gmail.com
 description: I talk about Android development and other things
 baseurl: "" 
 url: "http://seaplain.com"
+favicon: "/assets/site/favicon.ico"
 twitter_username: 
 github_username:  cplain
 
