@@ -1,14 +1,10 @@
 /**
  * Reset some basic elements
  */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure {
     margin: 0;
     padding: 0;
 }
-
-
 
 /**
  * Basic styling
@@ -23,19 +19,12 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, %vertical-rhythm {
     margin-bottom: $spacing-unit / 2;
 }
-
-
 
 /**
  * Images
@@ -45,20 +34,15 @@ img {
     vertical-align: middle;
 }
 
-
-
 /**
  * Figures
  */
 figure > img {
     display: block;
 }
-
 figcaption {
     font-size: $small-font-size;
 }
-
-
 
 /**
  * Lists
@@ -66,15 +50,11 @@ figcaption {
 ul, ol {
     margin-left: $spacing-unit;
 }
-
 li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
+    > ul, > ol {
+        margin-bottom: 0;
     }
 }
-
-
 
 /**
  * Headings
@@ -82,8 +62,6 @@ li {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
-
-
 
 /**
  * Links
@@ -95,18 +73,15 @@ a {
     &:visited {
         color: darken($link-color, 15%);
     }
-
     &:hover {
         color: $text-color;
     }
 }
-    a img {
-        border: none;
-    }
+a img {
+    border: none;
+}
 
-
-
-    /**
+/**
  * Blockquotes
  */
 blockquote {
@@ -117,7 +92,7 @@ blockquote {
     letter-spacing: -1px;
     font-style: italic;
 
-    > :last-child {
+    >:last-child {
         margin-bottom: 0;
     }
 }
@@ -126,8 +101,21 @@ blockquote {
  * Wrapper
  */
 .wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:-webkit-calc(# {
+        $content-width
+    }
+    - (# {
+        $spacing-unit
+    }
+    * 2));
+
+    max-width:calc(# {
+        $content-width
+    }
+    - (# {
+        $spacing-unit
+    }
+    * 2));
     margin-right: auto;
     margin-left: auto;
     padding-right: $spacing-unit;
@@ -135,20 +123,30 @@ blockquote {
     @extend %clearfix;
 
     @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        max-width:-webkit-calc(# {
+            $content-width
+        }
+        - (# {
+            $spacing-unit
+        }
+        ));
+
+        max-width:calc(# {
+            $content-width
+        }
+        - (# {
+            $spacing-unit
+        }
+        ));
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
 }
 
-
-
 /**
  * Clearfix
  */
 %clearfix {
-
     &:after {
         content: "";
         display: table;
@@ -156,13 +154,10 @@ blockquote {
     }
 }
 
-
-
 /**
  * Icons
  */
 .icon {
-
     > svg {
         display: inline-block;
         width: 16px;
