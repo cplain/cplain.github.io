@@ -6,8 +6,7 @@ baseurl: ""
 url: "http://seaplain.com"
 favicon: "/assets/site/favicon.ico"
 theme_color: "#1a1a1a"
-twitter_username: 
-github_username:  cplain
+github_username: cplain
 
 # Build settings
 markdown: kramdown
