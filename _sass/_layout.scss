@@ -179,7 +179,7 @@
 }
 
 /**
- * Other
+ * Drawer
  */
 .mdl-layout-subtitle {
     line-height: 24px;
@@ -193,6 +193,15 @@
     letter-spacing: .02em;
     font-weight: 400;
 }
+@media screen and (max-width:1024px) {
+    .mdl-layout-subtitle {
+        padding-left: 16px
+    }
+}
+
+/**
+ * Other
+ */
 .rss-subscribe {
     padding-left: 8px;
     margin-left: 8px;
