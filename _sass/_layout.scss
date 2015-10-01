@@ -24,6 +24,11 @@
     padding: $spacing-unit / 4;
 }
 
+.mdl-layout {
+    height: auto;
+    overflow-y: visible;
+}
+
 /**
  * Post level
  */
