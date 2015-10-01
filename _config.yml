@@ -5,7 +5,7 @@ description: I talk about Android development and other things
 baseurl: "" 
 url: "http://seaplain.com"
 favicon: "/assets/site/favicon.ico"
-theme_color: "#80cbc4"
+theme_color: "#009688"
 github_username: cplain
 excerpt_separator: <!--end_excerpt-->
 
