@@ -4,24 +4,20 @@ title: Google Tag Manager - Part One
 subtitle: Getting to know one another
 tags: Android GTM Analytics Google_Analytics Google_Tag_Manager
 author: Coby Plain
+res: /assets/2015-09-21-google-tag-manager
 ---
 
-{% assign res = "/assets/2015-09-21-google-tag-manager" %}
-
 ---
 
-## Series Overview
+Today, I will be kicking off a series of articles to look at Google Tag Manager and getting familiar with how it works. But what is Google Tag Manager?
 
-&nbsp;
+<!--end_excerpt-->
+
+&nbsp;  
 
 **Google Tag Manager** (GTM) is a layer of separation over other analytics suites. It serves as a distribution gateway that will receive notifications from clients and then uses its own logic to construct and fire tracking events at any number of analytics tools. We will be taking a look at GTM over the next few articles, and by the end of this series we will have a working Tag Manager implementation in Android! If you are looking into GTM for iOS, the first few articles will be identical for you, it is only the client-side implementation that changes. For web, the core concepts and meanings are the same.
 
 &nbsp;
-
-So today, we will be looking at GTM and getting familiar with how it works.
-
-
-&nbsp;  
 
 ~~~
 Note: During the course of this series I will be showing real ids and values, this is to help you see what values are important and where they go. They will all be long deleted before you read them.
@@ -32,8 +28,6 @@ Note: During the course of this series I will be showing real ids and values, th
 ---
 
 ## Why GTM
-
-&nbsp;
 
 There are three core benefits of GTM:
 
@@ -55,8 +49,6 @@ Tip: If you only want a limited set of tracking to start, build the clients to t
 
 ## How it works
 
-&nbsp;
-
 At its heart, GTM is very simple. The trick is wrapping your head around the components, what they are for and how they work together. To make it even simpler, that is exactly what I aim to do for you in this article.
 
 GTM has only three core elements we need to understand. **The Container**, **The Client** and **The Analytics Suite(s)**. Below I will briefly outline these elements, what they look like and how they behave. Once we have all this in our heads we be ready to start setting up a GTM instance in the next article.
@@ -71,8 +63,6 @@ Just repeating myself: This section will be an overview, my aim here is to show 
 
 
 ###The Container
-
-&nbsp;
 
 This is the heart of GTM. The container has all the logic, variables and connections to additional suites. The container is what we change when we want to update what is tracked and how we track it. When we are happy with our changes we publish them as a new version of container and the changes take effect. 
 
@@ -91,7 +81,7 @@ We edit our container via the [GTM web portal][GTM]. We will go over each sectio
 
 &nbsp;
 
-![Container]({{res}}/container_overview.png)
+![Container]({{page.res}}/container_overview.png)
 
 &nbsp;
 
@@ -101,9 +91,7 @@ This is a brand new container so there isn't anything of real interest happening
 
 ####The Tab Bar
 
-&nbsp;
-
-![Container Top]({{res}}/container_top.png)
+![Container Top]({{page.res}}/container_top.png)
 
 &nbsp;
 
@@ -127,9 +115,7 @@ I am calling this the tab bar even though it is more of a composite navigational
 
 ####The Side Bar
 
-&nbsp;
-
-![Container Side]({{res}}/container_side.png)
+![Container Side]({{page.res}}/container_side.png)
 
 &nbsp;
 
@@ -153,8 +139,6 @@ Search, Overview and Folders are not relevant to the content of this article, th
 
 ###The Client
 
-&nbsp;
-
 A GTM client can currently be one of three things: a website, an iOS app or an Android app. For the context this article we will deal with an Android mobile application we will call **GTMApp**. 
 
 To follow some nice practices and ensure we can cover as many gotchas as possible, **GTMApp** will follow a clean MVP pattern, use [Dagger 2][Dagger] for dependency injection, have some unit tests that sit on top of [Roboelectric][Roboelectric] and will have several variants and flavours that point to different environments.
@@ -164,8 +148,6 @@ That is all we will need to say about our client for now. We will become a lot m
 &nbsp;
 
 ###The Analytics Suite(s)
-
-&nbsp;
 
 GTM currently has three tools it talks to out of the box for mobile: **Google Analytics**, **Google AdWords** and **doubleclick by Google** (for web it is far  than three). It also has the option for custom function calls and so on. It can talk to as many or as few instances of these tools as you would like. If for some reason you wanted three hundred and ninety-four Google AdWords accounts all receiving tags from your app, nothing is stopping you.
 
@@ -182,8 +164,6 @@ A quick note on talking to GA in real-time: A real-time event is visible in GA f
 ---
 
 ## Summary
-
-&nbsp;
 
 So we now have a basic understanding of GTM, and we know how it all looks. This is all great but we haven't really done anything yet. But soon enough we will start to see how these components come together in a super simple way to allow some pretty powerful analytics.
 

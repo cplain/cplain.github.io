@@ -1,23 +1,32 @@
 ---
 layout: default
 ---
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
+<div class="site-wrapper home">
+  <div class="mdl-grid">
     {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <div class="post-card mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--4dp">
+      <div class="post-card-title">
+        <div class="mdl-card__title" style="background: url('{{ post.res }}/cover_image.png') center / cover;">
+          <h2 class="mdl-card__title-text">{{ post.title }}</h2>
+        </div>
+      </div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
+      <div class="post-card-expandable mdl-card__supporting-text">
+        <div class="mdl-card__subtitle-text">
+          {{ post.excerpt | strip_html }} <strong>- {{ post.date | date: "%b %-d, %Y" }}</strong>
+        </div>
+      </div>
+
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ post.url | prepend: site.baseurl }}">Check it out</a>
+      </div>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p class="rss-subscribe">
+    subscribe
+    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>
+  </p>
 
 </div>

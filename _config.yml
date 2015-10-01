@@ -1,12 +1,13 @@
 # Site settings
-title: Seaplain's Brain Dump
+title: Seaplain's Blog
 email: seaplain1@gmail.com
 description: I talk about Android development and other things
 baseurl: "" 
 url: "http://seaplain.com"
 favicon: "/assets/site/favicon.ico"
-theme_color: "#1a1a1a"
+theme_color: "#80cbc4"
 github_username: cplain
+excerpt_separator: <!--end_excerpt-->
 
 # Build settings
 markdown: kramdown

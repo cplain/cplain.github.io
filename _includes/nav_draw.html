@@ -1,0 +1,21 @@
+<div class="mdl-layout__drawer">
+	<span class="mdl-layout-title">{{ site.title }}</span>
+
+	<span class="mdl-layout-subtitle">Pages</span>
+
+	<nav class="mdl-navigation">
+		<a class="mdl-navigation__link" href="{{ site.baseurl }}/">Home</a>
+
+		{% for page in site.pages %} {% if page.title %}
+		<a class="mdl-navigation__link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+		{% endif %} {% endfor %}
+	</nav>
+
+	<span class="mdl-layout-subtitle">Posts</span>
+	
+	<nav class="mdl-navigation">
+		{% for post in site.posts %} {% if post.title %}
+		<a class="mdl-navigation__link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+		{% endif %} {% endfor %}
+	</nav>
+</div>

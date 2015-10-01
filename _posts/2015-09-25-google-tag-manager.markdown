@@ -4,13 +4,14 @@ title: Google Tag Manager - Part Two
 subtitle: All that cloud nonsense
 tags: Android GTM Analytics Google_Analytics Google_Tag_Manager
 author: Coby Plain
+res: /assets/2015-09-25-google-tag-manager
 ---
 
-{% assign res = "/assets/2015-09-25-google-tag-manager" %}
-
 ---
 
-## Series Overview
+Now that [we are familiar with GTM][Part 1], we will setting up out own container and hooking it up to Google Analytics! This is the heaviest article in the series by far, but most of this is images so you can see what is going on.
+
+<!--end_excerpt-->
 
 &nbsp;
 
@@ -18,19 +19,9 @@ author: Coby Plain
 
 &nbsp;
 
-So today, now that [we are familiar with GTM][Part 1], we will setting up out own GTM container and hooking it up to GA! This is the heaviest article in the series by far, but most of this is images so you can see what is going on.
-
-&nbsp;
-
 ---
 
 ## Lets get started
-
-&nbsp;
-
-###The Plan
-
-&nbsp;
 
 Before we go charging headfirst into everything lets first stop and go over what we will be doing. 
 
@@ -42,13 +33,11 @@ It all sounds easy but some of those steps can be a little involved. If you're g
 
 ###Let there be GTM
 
-&nbsp;
-
 Step one is acquiring ourselves a GTM container to work with. Log into [https://tagmanager.google.com/][GTM] with your Google account. You should come straight to the account setup page below:
 
 &nbsp;
 
-![New Container Step 1]({{res}}/new_container_1.png)
+![New Container Step 1]({{page.res}}/new_container_1.png)
 
 &nbsp;
 
@@ -66,7 +55,7 @@ Once you hit continue you have your account. Now we can set up a container!
 
 &nbsp;
 
-![New Container Step 2]({{res}}/new_container_2.png)
+![New Container Step 2]({{page.res}}/new_container_2.png)
 
 &nbsp;
 
@@ -76,7 +65,7 @@ Once you click create you will see this screen:
 
 &nbsp;
 
-![New Container Step 3]({{res}}/new_container_3.png)
+![New Container Step 3]({{page.res}}/new_container_3.png)
 
 &nbsp;
 
@@ -88,7 +77,7 @@ If you ever want to create another account you can in the **Accounts Tab** by cl
 
 &nbsp;
 
-![New Container Step 4]({{res}}/new_container_4.png)
+![New Container Step 4]({{page.res}}/new_container_4.png)
 
 &nbsp;
 
@@ -96,7 +85,7 @@ If you want to create a new container under the same account, you can simply cli
 
 &nbsp;
 
-![New Container Step 5]({{res}}/new_container_5.png)
+![New Container Step 5]({{page.res}}/new_container_5.png)
 
 &nbsp;
 
@@ -116,7 +105,7 @@ If you have never had a GA account before you will see something like this:
 
 &nbsp;
 
-![New GA Step 1]({{res}}/new_ga_1.png)
+![New GA Step 1]({{page.res}}/new_ga_1.png)
 
 &nbsp;
 
@@ -124,7 +113,7 @@ Lets click on that big friendly sign up button!
 
 &nbsp;
 
-![New GA Step 2]({{res}}/new_ga_2.png)
+![New GA Step 2]({{page.res}}/new_ga_2.png)
 
 &nbsp;
 
@@ -134,7 +123,7 @@ Below this we will see a number of data sharing services (all helpfully pre-tick
 
 &nbsp;
 
-![New GA Step 3]({{res}}/new_ga_3.png)
+![New GA Step 3]({{page.res}}/new_ga_3.png)
 
 &nbsp;
 
@@ -142,7 +131,7 @@ Once we are all done we will see our new GA instance in all its glory. I have hi
 
 &nbsp;
 
-![New GA Step 4]({{res}}/new_ga_4.png)
+![New GA Step 4]({{page.res}}/new_ga_4.png)
 
 &nbsp;
 
@@ -150,7 +139,7 @@ You can always create another GA instance by clicking on the **Property** dropdo
 
 &nbsp;
 
-![New GA Step 5]({{res}}/new_ga_5.png)
+![New GA Step 5]({{page.res}}/new_ga_5.png)
 
 &nbsp;
 
@@ -160,15 +149,11 @@ This is GA done! Later we will need to come back to the **Reporting tab** and go
 
 ###Setting up our container
 
-&nbsp;
-
 Here comes the good stuff. We now have everything we need to get started. In this example I am going to set up GTM to do two things. Track all page views and all button clicks in my app. These two situations are ~90% of cases in every analytics solution we will implement, and we can do it now with just two tags.
 
 &nbsp;
 
 ####Step One: Variables
-
-&nbsp;
 
 I am going to create four variables that we will use for everything. As I will point out later we could make a few more, but I will limit it in our example to minimise complexity.
 
@@ -178,7 +163,7 @@ So first lets go to the **Variables section** in GTM.
 
 &nbsp;
 
-![Variables Step 1]({{res}}/variables_1.png)
+![Variables Step 1]({{page.res}}/variables_1.png)
 
 &nbsp;
 
@@ -190,7 +175,7 @@ First we click on **New** and we are greeted with the following:
 
 &nbsp;
 
-![Variables Step 2]({{res}}/variables_2.png)
+![Variables Step 2]({{page.res}}/variables_2.png)
 
 &nbsp;
 
@@ -208,7 +193,7 @@ So for now, lets create a **Constant** for our tracking id:
 
 &nbsp;
 
-![Variables Step 3]({{res}}/variables_3.png)
+![Variables Step 3]({{page.res}}/variables_3.png)
 
 &nbsp;
 
@@ -220,7 +205,7 @@ When we click **Create Variable** we will see our new constant in the **User-Def
 
 &nbsp;
 
-![Variables Step 4]({{res}}/variables_4.png)
+![Variables Step 4]({{page.res}}/variables_4.png)
 
 &nbsp;
 
@@ -244,7 +229,7 @@ So here are our new variables:
 
 &nbsp;
 
-![Variables Step 5]({{res}}/variables_5.png)
+![Variables Step 5]({{page.res}}/variables_5.png)
 
 &nbsp;
 
@@ -254,13 +239,11 @@ You'll notice they are slightly different than our constant. Obviously we don't 
 
 ####Step Two: Triggers
 
-&nbsp;
-
 So now we have our variables, but they aren't that useful right now. They just sit there... Doing nothing... What we need is a way to determine when something has happened, not just any something, but the thing we are wanting to track. When we know it has occurred then we know to tell GA and pass along our variables. Thankfully GTM has a mechanism for this, **Triggers**. So lets navigate to the **Triggers section** in GTM.
 
 &nbsp;
 
-![Triggers Step 1]({{res}}/triggers_1.png)
+![Triggers Step 1]({{page.res}}/triggers_1.png)
 
 &nbsp;
 
@@ -268,7 +251,7 @@ As we would expect it is also empty. So to begin lets click on **New** and make 
 
 &nbsp;
 
-![Triggers Step 2]({{res}}/triggers_2.png)
+![Triggers Step 2]({{page.res}}/triggers_2.png)
 
 &nbsp;
 
@@ -280,7 +263,7 @@ There are a few elements we have here. Up the top is the name, similar to our va
 
 &nbsp;
 
-![Triggers Step 3]({{res}}/triggers_3.png)
+![Triggers Step 3]({{page.res}}/triggers_3.png)
 
 &nbsp;
 
@@ -288,7 +271,7 @@ Notice the **Event** variable. We haven't seen this guy yet. As I mentioned in t
 
 &nbsp;
 
-![Triggers Step 4]({{res}}/triggers_4.png)
+![Triggers Step 4]({{page.res}}/triggers_4.png)
 
 &nbsp;
 
@@ -301,7 +284,7 @@ Now when we click **Create Trigger** we will see our brand new Trigger ready to 
 
 &nbsp;
 
-![Triggers Step 5]({{res}}/triggers_5.png)
+![Triggers Step 5]({{page.res}}/triggers_5.png)
 
 &nbsp;
 
@@ -309,7 +292,7 @@ We will create one more for our click event...
 
 &nbsp;
 
-![Triggers Step 6]({{res}}/triggers_6.png)
+![Triggers Step 6]({{page.res}}/triggers_6.png)
 
 &nbsp;
 
@@ -319,8 +302,6 @@ And done! We now have a way to detect when interesting things are happening!
 
 ####Step Three: Tags
 
-&nbsp;
-
 So we have our data and we have a way to tell us something important is happening in that data. But what we don't have is any way to do something about it. 
 
 Enter **Tags**! As you can guess by the name, these are the core element of Google **Tag** Manager. Tags are our actions, they bind to triggers and are activated when one of those triggers fires. They then use the variables and data provided to compose and send something meaningful to Google Analytics. These are what we have been building towards, the culmination of our efforts!
@@ -329,16 +310,15 @@ So lets get started by navigating to the **Tags section**
 
 &nbsp;
 
-![Tags Step 1]({{res}}/tags_1.png)
+![Tags Step 1]({{page.res}}/tags_1.png)
 
 &nbsp;
 
 Just like before this section is empty. Lets start by clicking on **New** and creating our page views tag. This tag will fire through to GA and will be visible under **Screens** in the **Real-Time** section.
 
-
 &nbsp;
 
-![Tags Step 2]({{res}}/tags_2.png)
+![Tags Step 2]({{page.res}}/tags_2.png)
 
 &nbsp;
 
@@ -348,7 +328,7 @@ We then need to configure our tag...
 
 &nbsp;
 
-![Tags Step 3]({{res}}/tags_3.png)
+![Tags Step 3]({{page.res}}/tags_3.png)
 
 &nbsp;
 
@@ -356,7 +336,7 @@ Just like with variables and triggers, the name up the top is our own internal r
 
 &nbsp;
 
-![Tags Step 4]({{res}}/tags_4.png)
+![Tags Step 4]({{page.res}}/tags_4.png)
 
 &nbsp;
 
@@ -374,7 +354,7 @@ So lets take a look at our final tag.
 
 &nbsp;
 
-![Tags Step 5]({{res}}/tags_5.png)
+![Tags Step 5]({{page.res}}/tags_5.png)
 
 &nbsp;
 
@@ -382,7 +362,7 @@ Looks pretty good, all we need to do it click **Create Tag** and we are up and r
 
 &nbsp;
 
-![Tags Step 6]({{res}}/tags_6.png)
+![Tags Step 6]({{page.res}}/tags_6.png)
 
 &nbsp;
 
@@ -390,7 +370,7 @@ So now we have our page view tag. Lets create a tag for all the click events our
 
 &nbsp;
 
-![Tags Step 7]({{res}}/tags_7.png)
+![Tags Step 7]({{page.res}}/tags_7.png)
 
 &nbsp;
 
@@ -402,7 +382,7 @@ We can pass any data we like in these fields `with the exception of value, value
 
 &nbsp;
 
-![Tags Step 8]({{res}}/tags_8.png)
+![Tags Step 8]({{page.res}}/tags_8.png)
 
 &nbsp;
 
@@ -419,7 +399,7 @@ Lets tie this to our click trigger and hit the go button!
 
 &nbsp;
 
-![Tags Step 9]({{res}}/tags_9.png)
+![Tags Step 9]({{page.res}}/tags_9.png)
 
 &nbsp;
 
@@ -429,13 +409,11 @@ And there we have it! Our two tags capable of tracking every page view and click
 
 ####Step Four: Publishing
 
-&nbsp;
-
 Time to click that little red button that has been watching over us this whole time.
 
 &nbsp;
 
-![Publish Step 1]({{res}}/publish_1.png)
+![Publish Step 1]({{page.res}}/publish_1.png)
 
 &nbsp;
 
@@ -443,7 +421,7 @@ If you click on the dropdown you may see there are actually two options availabl
 
 &nbsp;
 
-![Publish Step 2]({{res}}/publish_2.png)
+![Publish Step 2]({{page.res}}/publish_2.png)
 
 &nbsp;
 
@@ -451,16 +429,15 @@ But for us, we just want to hit publish.
 
 &nbsp;
 
-![Publish Step 3]({{res}}/publish_3.png)
+![Publish Step 3]({{page.res}}/publish_3.png)
 
 &nbsp;
 
 We will see a nice little confirmation window. We can just click **Publish Now** but remember, this is your last chance to back out. Once you hit publish you are live for a minimum of 24 hours the second a client happens to pick up your change before you realise you made a mistake. The more users you have the more likely this is, so be careful.
 
-
 &nbsp;
 
-![Publish Step 4]({{res}}/publish_4.png)
+![Publish Step 4]({{page.res}}/publish_4.png)
 
 &nbsp;
 
@@ -468,7 +445,7 @@ TADA! We are done! If we go to the **Versions tab** we can see version 1 of our 
 
 &nbsp;
 
-![Publish Step 5]({{res}}/publish_5.png)
+![Publish Step 5]({{page.res}}/publish_5.png)
 
 &nbsp;
 
@@ -476,15 +453,13 @@ Our final step is to download the container file for our client. This is the fil
 
 &nbsp;
 
-![Publish Step 6]({{res}}/publish_6.png)
+![Publish Step 6]({{page.res}}/publish_6.png)
 
 &nbsp;
 
 ---
 
 ## Summary
-
-&nbsp;
 
 And this is the GTM configuration done! And as we can see, its all pretty straight forward. We have glossed over a lot of advanced features but you really don't need them for the majority of analytics solutions. All that is left is setting up our Android app so we can see our data flowing through our brand new container!
 

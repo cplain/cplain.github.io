@@ -100,9 +100,9 @@ blockquote {
 /**
  * Wrapper
  */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+.site-wrapper {
+    max-width: -webkit-calc(#{$site-content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$site-content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
     padding-right: $spacing-unit;
@@ -110,8 +110,47 @@ blockquote {
     @extend %clearfix;
 
     @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        max-width: -webkit-calc(#{$site-content-width} - (#{$spacing-unit}));
+        max-width:         calc(#{$site-content-width} - (#{$spacing-unit}));
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+
+    @include media-query($on-palm) {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+
+.page-wrapper {
+    max-width: -webkit-calc(#{$page-content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$page-content-width} - (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    @extend %clearfix;
+
+    @include media-query($on-laptop) {
+        max-width: -webkit-calc(#{$post-content-width} - (#{$spacing-unit}));
+        max-width:         calc(#{$post-content-width} - (#{$spacing-unit}));
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+}
+
+.post-wrapper {
+    max-width: -webkit-calc(#{$post-content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$post-content-width} - (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    @extend %clearfix;
+
+    @include media-query($on-laptop) {
+        max-width: -webkit-calc(#{$post-content-width} - (#{$spacing-unit}));
+        max-width:         calc(#{$post-content-width} - (#{$spacing-unit}));
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
