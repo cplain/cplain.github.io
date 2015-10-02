@@ -10,10 +10,6 @@ body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
@@ -100,7 +96,7 @@ blockquote {
 /**
  * Wrapper
  */
-.site-wrapper {
+.home {
     max-width: -webkit-calc(#{$site-content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$site-content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
@@ -122,7 +118,7 @@ blockquote {
     }
 }
 
-.page-wrapper {
+.page {
     max-width: -webkit-calc(#{$page-content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$page-content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
@@ -139,7 +135,7 @@ blockquote {
     }
 }
 
-.post-wrapper {
+.post {
     max-width: -webkit-calc(#{$post-content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$post-content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
