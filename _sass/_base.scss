@@ -13,6 +13,10 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
+
+    @include media-query($on-palm) {
+        background-color: $palm-background-color;
+    }
 }
 
 /**

@@ -7,21 +7,28 @@
     flex-direction: column;
     height: 100%;
 }
+
 .site-content {
     flex: 1 0 auto;
     padding: var(--space) var(--space) 0;
     width: 100%;
 }
+
 .site-title {
-    &, &:visited {
+    &,
+    &:visited {
         color: $title-text-color;
     }
+
 }
 
 .mdl-layout {
-    height: auto;
-    min-height: 100%;
-    overflow-y: visible;
+    background-color: $background-color;
+
+    @include media-query($on-palm) {
+        height: auto;
+        overflow-y: visible;
+    }
 }
 
 /**
@@ -30,6 +37,7 @@
 .page-content {
     padding: $spacing-unit / 4;
 }
+
 .page {
     padding-top: $spacing-unit;
     padding-bottom: $spacing-unit;
@@ -47,24 +55,30 @@
     color: #fff;
     height: 156px;
 }
+
 .mdl-cell {
     display: flex;
     flex-flow: column;
 }
+
 .mdl-card__supporting-text {
     flex: 2;
 }
+
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
 }
+
 .post-link {
     display: block;
     font-size: 24px;
 }
+
 .post-header {
     margin-bottom: $spacing-unit;
 }
+
 .post-title {
     font-size: 42px;
     letter-spacing: -1px;
@@ -73,61 +87,83 @@
     @include media-query($on-laptop) {
         font-size: 36px;
     }
+
 }
+
 .post-subtitle {
     font-size: 24px;
     letter-spacing: -1px;
     line-height: 1;
 }
+
 .post-content {
     table {
         margin: 10px 0 15px 0;
         border-collapse: collapse;
     }
-    td, th {
+
+    td,
+    th {
         border: 1px solid $border-color;
         padding: 3px 10px;
     }
+
     th {
         padding: 5px 10px;
     }
+
     p {
         margin-bottom: 9px;
     }
-    h1, h2, h3, h4, h5, h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         color: #404040;
         line-height: 36px;
     }
+
     h1 {
         margin-bottom: 18px;
         font-size: 30px;
     }
+
     h2 {
         font-size: 30px;
     }
+
     h3 {
         font-size: 24px;
     }
+
     h4 {
         font-size: 22px;
     }
+
     h5 {
         font-size: 16px;
     }
+
     h6 {
         font-size: 14px;
     }
+
     hr {
         margin: 0 0 19px;
         border: 0;
         border-bottom: 1px solid $border-color-bottom;
     }
+
     blockquote {
         padding: 13px 13px 21px 15px;
         margin-bottom: 18px;
         font-family: $quote-font-family;
         font-style: italic;
     }
+
     blockquote:before {
         content: "\201C";
         font-size: 40px;
@@ -135,6 +171,7 @@
         font-family: $quote-font-family;
         color: $blockquote-color;
     }
+
     blockquote p {
         font-size: 14px;
         font-weight: 300;
@@ -142,9 +179,12 @@
         margin-bottom: 0;
         font-style: italic;
     }
-    code, pre {
+
+    code,
+    pre {
         font-family: $code-font-family;
     }
+
     code {
         background-color: $grey-color-light;
         color: rgba(0, 0, 0, 0.75);
@@ -154,6 +194,7 @@
         -moz-border-radius: 3px;
         border-radius: 3px;
     }
+
     pre {
         display: block;
         padding: 14px;
@@ -164,34 +205,52 @@
         white-space: pre-wrap;
         word-wrap: break-word;
     }
+
     pre code {
         background-color: $background-color;
         color: $text-color-code;
         font-size: 11px;
         padding: 0;
     }
+
     sup {
         font-size: 0.83em;
         vertical-align: super;
         line-height: 0;
     }
+
     * {
         -webkit-print-color-adjust: exact;
     }
+
     @media screen and (min-width:914px) {
         body {
             width: 854px;
             margin: 10px auto;
         }
+
     }
+
     @media print {
-        body, code, pre code, h1, h2, h3, h4, h5, h6 {
+        body,
+        code,
+        pre code,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: black;
         }
-        table, pre {
+
+        table,
+        pre {
             page-break-inside: avoid;
         }
+
     }
+
 }
 
 /**
@@ -209,10 +268,12 @@
     letter-spacing: .02em;
     font-weight: 400;
 }
+
 @media screen and (max-width:1024px) {
     .mdl-layout-subtitle {
         padding-left: 16px
     }
+
 }
 
 /**
