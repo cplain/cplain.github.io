@@ -17,6 +17,8 @@ layout: default
 
       <div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ post.url | prepend: site.baseurl }}">Check it out</a>
+        <div class="mdl-layout-spacer"></div>
+        <span class="disqus-comment-count" data-disqus-url="{{ site.url | append: post.url | prepend: site.baseurl }}"></span>
       </div>
     </div>
     {% endfor %}
@@ -28,3 +30,4 @@ layout: default
   </p>
 
 </div>
+{% include comments_count.html %}

@@ -7,6 +7,7 @@ url: "http://seaplain.com"
 favicon: "/assets/site/favicon.ico"
 theme_color: "#009688"
 github_username: cplain
+disqus_shortname: seaplain
 excerpt_separator: <!--end_excerpt-->
 
 # Build settings
