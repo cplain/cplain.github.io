@@ -50,25 +50,22 @@
  * Post level
  */
 .post {
-    padding-top: $spacing-unit;
-    padding-bottom: $spacing-unit;
+    padding-top: $spacing-unit / 2;
+    padding-bottom: $spacing-unit / 2;
 }
 
-.mdl-card__title {
-    color: #fff;
-    height: 156px;
+.post-internal {
+    padding: $spacing-unit;
+
+    @include media-query($on-palm) {
+        padding: 0px;
+    }
 }
 
-.mdl-cell {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-flow: column;
-}
-
-.mdl-card__supporting-text {
-    flex: 2;
+.post > .mdl-shadow--4dp {
+    @include media-query($on-palm) {
+        box-shadow: none;
+    } 
 }
 
 .post-meta {
@@ -256,7 +253,23 @@
         }
 
     }
+}
 
+.mdl-card__title {
+    color: #fff;
+    height: 156px;
+}
+
+.mdl-cell {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-flow: column;
+}
+
+.mdl-card__supporting-text {
+    flex: 2;
 }
 
 /**
@@ -279,7 +292,6 @@
     .mdl-layout-subtitle {
         padding-left: 16px
     }
-
 }
 
 /**
