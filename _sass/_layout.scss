@@ -34,6 +34,10 @@
     }
 }
 
+.mdl-card__menu {
+  color: #fff;
+}
+
 /**
  * Page level
  */
@@ -261,6 +265,7 @@
 }
 
 .mdl-cell {
+    position: relative;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -325,4 +330,11 @@
     text-align: center;
     line-height: 36px;
     vertical-align: middle;
+}
+
+.mdl-menu > a {
+    color: rgba(0,0,0,.87);
+    a:visited {
+        color: rgba(0,0,0,.87);
+    }
 }
