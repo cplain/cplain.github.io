@@ -17,6 +17,26 @@
     width: 100%;
 }
 
+.site-content-ribbon {
+    flex: 1 0 auto;
+    padding: var(--space) var(--space) 0;
+    width: 100%;
+
+    @include media-query-min($on-palm) {
+        margin-top: -40vh;
+    }
+}
+
+
+.ribbon {
+    @include media-query-min($on-palm) {
+         width: 100%;
+         height: 40vh;
+         background-color: $theme-color;
+         flex-shrink: 0;
+     }
+}
+
 .site-title {
     &,
     &:visited {
@@ -28,14 +48,21 @@
 .mdl-layout {
     background-color: $background-color;
 
-    @include media-query($on-palm) {
+    @include media-query-max($on-palm) {
         height: auto;
         overflow-y: visible;
     }
+
 }
 
 .mdl-card__menu {
-  color: $title-text-color;
+    color: $title-text-color;
+}
+
+.no-shadow {
+    @include media-query-min($on-palm) {
+        box-shadow: none;
+    }
 }
 
 /**
@@ -46,8 +73,25 @@
 }
 
 .page {
-    padding-top: $spacing-unit;
-    padding-bottom: $spacing-unit;
+    padding-top: $spacing-unit / 2;
+    padding-bottom: $spacing-unit / 2;
+}
+
+.page-internal {
+    padding: $spacing-unit;
+    background-color: $background-color;
+
+    @include media-query-max($on-palm) {
+        padding: 0px;
+    }
+
+}
+
+.page > .mdl-shadow--4dp {
+    @include media-query-max($on-palm) {
+        box-shadow: none;
+    }
+
 }
 
 /**
@@ -60,16 +104,19 @@
 
 .post-internal {
     padding: $spacing-unit;
+    background-color: $background-color;
 
-    @include media-query($on-palm) {
+    @include media-query-max($on-palm) {
         padding: 0px;
     }
+
 }
 
 .post > .mdl-shadow--4dp {
-    @include media-query($on-palm) {
+    @include media-query-max($on-palm) {
         box-shadow: none;
-    } 
+    }
+
 }
 
 .post-meta {
@@ -91,7 +138,7 @@
     letter-spacing: -1px;
     line-height: 1;
 
-    @include media-query($on-laptop) {
+    @include media-query-max($on-laptop) {
         font-size: 36px;
     }
 
@@ -257,9 +304,26 @@
         }
 
     }
+
 }
 
+.disqus-comment-count {
+    color: grey;
+    padding: 0 8px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle;
+}
+
+/**
+ * Index
+ */
 .mdl-card__title {
+    background-color: $theme-color;
     color: #fff;
     height: 156px;
 }
@@ -275,6 +339,33 @@
 
 .mdl-card__supporting-text {
     flex: 2;
+}
+
+.mdl-card__actions {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.mdl-menu > a {
+    color: rgba(0, 0, 0, .87);
+
+    a:visited {
+        color: rgba(0, 0, 0, .87);
+    }
+
+}
+
+.rss-subscribe {
+    padding-left: 8px;
+    margin-left: 8px;
+}
+
+.username {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap
 }
 
 /**
@@ -296,45 +387,5 @@
 @media screen and (max-width:1024px) {
     .mdl-layout-subtitle {
         padding-left: 16px
-    }
-}
-
-/**
- * Other
- */
-.rss-subscribe {
-    padding-left: 8px;
-    margin-left: 8px;
-}
-
-.username {
-    color: inherit;
-    text-decoration: none;
-    white-space: nowrap
-}
-
-.mdl-card__actions {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.disqus-comment-count {
-    color: grey;
-    padding: 0 8px;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 36px;
-    vertical-align: middle;
-}
-
-.mdl-menu > a {
-    color: rgba(0,0,0,.87);
-    a:visited {
-        color: rgba(0,0,0,.87);
     }
 }

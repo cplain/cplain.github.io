@@ -3,8 +3,19 @@
 	{% include site_elements/head.html %}
 	<body class="site">
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-			{% include analytics/gtm.html %} {% include site_elements/header.html %} {% include site_elements/nav_draw.html %}
-			<main class="site-content">
+			{% include analytics/gtm.html %} {% include site_elements/nav_draw.html %}
+
+			{% if page.header == 'ribbon' %}
+			  {% include site_elements/header/no_shadow.html %}
+			  <div class="ribbon"></div>
+			  <main class="site-content-ribbon">
+			{% else %}
+			  {% include site_elements/header/default.html %}
+			  <main class="site-content">
+			{% endif %}
+
+
+			
 				<div class="page-content">{{ content }}</div>
 			</main>
 			{% include site_elements/footer.html %}
