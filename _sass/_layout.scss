@@ -27,8 +27,7 @@
     }
 }
 
-
-.ribbon {
+.site-ribbon {
     @include media-query-min($on-palm) {
          width: 100%;
          height: 40vh;
@@ -52,7 +51,6 @@
         height: auto;
         overflow-y: visible;
     }
-
 }
 
 .mdl-card__menu {
@@ -63,6 +61,15 @@
     @include media-query-min($on-palm) {
         box-shadow: none;
     }
+}
+
+.mdl-navigation {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-flow: column;
 }
 
 /**
@@ -388,3 +395,10 @@
         padding-left: 16px
     }
 }
+
+/**
+ * Other
+ */
+ .mdl-textfield--wide {
+    width: 100%;
+ }

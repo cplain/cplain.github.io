@@ -3,10 +3,15 @@
 
 	<div class="mdl-layout-spacer"></div>
 
-	<nav class="mdl-navigation mdl-layout--large-screen-only">
-		{% for page in site.pages %} {% if page.title %}
-		<a class="mdl-navigation__link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-		{% endif %} {% endfor %}
-	</nav>
+	<nav class="mdl-navigation">
+		<button id="site-menu" class="mdl-button mdl-js-button mdl-button--icon">
+		  <i class="material-icons">more_vert</i>
+		</button>
 
+		<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="site-menu">
+		  {% for page in site.pages %} {% if page.title %} {% if page.hide_from_nav == null or page.hide_from_nav == false %}
+		    <a class="mdl-menu__item" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+		  {% endif %} {% endif %} {% endfor %}
+		</ul>
+	</nav>
 </div>

@@ -1,0 +1,59 @@
+---
+layout: page
+title: Feedback
+permalink: /feedback/
+---
+
+<div class="feedback">
+	<p>
+		I'm always more than happy to recieve feedback on this site, its contents or my work. If you would like to include your email address I will do my best to get back to you.
+	</p>
+
+	<form action="//formspree.io/seaplain1@gmail.com" method="POST" name="feedback" onsubmit="return submitForm()">
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input class="mdl-textfield__input" type="text" id="title" name="_subject"/>
+			<label class="mdl-textfield__label" for="title">Title</label>
+			<span class="mdl-textfield__error">Titles help me in organising and replying</span>
+		</div>
+		<br>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input class="mdl-textfield__input" type="text" id="email" name="_subject"/>
+			<label class="mdl-textfield__label" for="email">Email (optional)</label>
+		</div>
+		<br>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-textfield--wide">
+			<textarea class="mdl-textfield__input" type="text" rows= "5" id="comments" name="comments"></textarea>
+			<label class="mdl-textfield__label" for="comments">Comments</label>
+			<span class="mdl-textfield__error">Need feedback to do anything</span>
+		</div>
+
+		<br>
+		<br>
+
+		<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Submit</button>
+
+		<input type="hidden" name="_next" value="feedback/thanks/" />
+	</form>
+</div>
+
+<script>
+	function submitForm() {
+	    var title = document.forms["feedback"]["title"];
+	    var comments = document.forms["feedback"]["comments"];
+	    var passed = true;
+
+	    if (title.value == null || title.value == "") {
+	    	title.required = true;
+	    	title.value = "";
+	        passed = false;
+	    }
+
+	    if (comments.value == null || comments.value == "") {
+	    	comments.required = true;
+	    	comments.value = "";
+	    	passed = false;
+	    }
+
+	    return passed;
+	}
+</script>

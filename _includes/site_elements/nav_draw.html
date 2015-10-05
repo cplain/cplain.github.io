@@ -6,9 +6,9 @@
 	<nav class="mdl-navigation">
 		<a class="mdl-navigation__link" href="{{ site.baseurl }}/">Home</a>
 
-		{% for page in site.pages %} {% if page.title %}
+		{% for page in site.pages %} {% if page.title %} {% if page.hide_from_nav == null or page.hide_from_nav == false %}
 		<a class="mdl-navigation__link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-		{% endif %} {% endfor %}
+		{% endif %} {% endif %} {% endfor %}
 	</nav>
 
 	<span class="mdl-layout-subtitle">Posts</span>
