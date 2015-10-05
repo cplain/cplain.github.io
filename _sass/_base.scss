@@ -170,11 +170,23 @@ blockquote {
 /**
  * Icons
  */
-.icon {
+.icon_link {
     > svg {
         display: inline-block;
         width: 16px;
         height: 16px;
         vertical-align: middle;
+
+        path {
+            fill: $icon-color;
+        }
+    }
+}
+
+.icon_link:hover {
+    > svg {
+        path {
+            fill: $icon-color-hover;
+        }
     }
 }
