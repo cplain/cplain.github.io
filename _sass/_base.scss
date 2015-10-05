@@ -131,11 +131,9 @@ blockquote {
     padding-left: $spacing-unit;
     @extend %clearfix;
 
-    @include media-query-max($on-laptop) {
-        max-width: -webkit-calc(#{$post-content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$post-content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
+    @include media-query-min($on-desktop) {
+        max-width: -webkit-calc(#{$page-content-width} + (#{$spacing-unit} * 6));
+        max-width:         calc(#{$page-content-width} + (#{$spacing-unit} * 6));
     }
 }
 
@@ -147,13 +145,12 @@ blockquote {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     @extend %clearfix;
-
-    @include media-query-max($on-laptop) {
-        max-width: -webkit-calc(#{$post-content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$post-content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
+    
+    @include media-query-min($on-desktop) {
+        max-width: -webkit-calc(#{$page-content-width} + (#{$spacing-unit} * 6));
+        max-width:         calc(#{$page-content-width} + (#{$spacing-unit} * 6));
     }
+
 }
 
 /**
