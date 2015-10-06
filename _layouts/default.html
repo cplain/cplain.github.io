@@ -2,13 +2,13 @@
 <html>
 	{% include site_elements/head.html %}
 	<body class="site">
-		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<div id= "layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 			{% include analytics/gtm.html %} {% include site_elements/nav_draw.html %}
 
 			{% if page.header == 'ribbon' %}
 			  {% include site_elements/header/no_shadow.html %}
-			  <div class="site-ribbon"></div>
-			  <main class="site-content-ribbon">
+			  {% include site_elements/header/parallax_ribbon.html %}
+			  <main id="site-content-ribbon" class="site-content-ribbon">
 			{% else %}
 			  {% include site_elements/header/default.html %}
 			  <main class="site-content">
