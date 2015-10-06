@@ -33,6 +33,7 @@ $site-content-width: 1600px;
 $page-content-width: 1000px;
 $post-content-width: 800px;
 
+// Devices
 $on-palm: 600px;
 $on-laptop: 800px;
 $on-desktop: 1600px;
@@ -49,5 +50,4 @@ $on-desktop: 1600px;
 	}
 }
 
-// Import partials from `sass_dir` (defaults to `_sass`)
 @import "base", "layout", "syntax-highlighting";

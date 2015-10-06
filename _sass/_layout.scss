@@ -129,8 +129,16 @@
 }
 
 .post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
+    &,
+    &:visited {
+        display: block;
+        line-height: 24px;
+        margin: 0;
+        font-size: $small-font-size;
+        cursor: pointer;
+        color: $grey-color;
+        margin-bottom: $spacing-unit / 2;
+    }
 }
 
 .post-link {

@@ -13,11 +13,11 @@ header: ribbon
 
 		<br>
 
-		<p class="post-meta">
+		<a class="post-meta" href="/about">
 			{{ page.date | date: "%b %-d, %Y" }}
 			{% if page.author %} • {{ page.author }}{% endif %}
 			{% if page.meta %} • {{ page.meta }}{% endif %}
-		</p>
+		</a>
 
 		<br>
 
@@ -28,4 +28,5 @@ header: ribbon
 	<br>
 
 	{% include post_elements/comments_footer.html %}
+
 </div>
