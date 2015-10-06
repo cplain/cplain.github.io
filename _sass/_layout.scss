@@ -36,6 +36,10 @@
     @include media-query-min($on-desktop) {
         height: 35vh;
     }
+
+    @include media-query-max($mdl-trans) {
+        margin-top: $mdl-trans-offset;
+    }
 }
 
 .site-title {

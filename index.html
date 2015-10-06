@@ -5,9 +5,9 @@ layout: default
 {% include index_elements/share/scripts.html %}
 <div class="home">
   <div class="mdl-grid">
-    {% for post in site.posts %}
+    {% for post in site.posts %} {% if post.title %} {% if post.hide == null or post.hide == false %}
       {% include index_elements/post_card.html %}
-    {% endfor %}
+    {% endif %} {% endif %} {% endfor %}
   </div>
 
   <p class="rss-subscribe">

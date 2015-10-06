@@ -2,7 +2,7 @@
 layout: page
 title: Thank you!
 permalink: /feedback/thanks/
-hide_from_nav: true
+hide: true
 res: /assets/feedback/thanks
 ---
 

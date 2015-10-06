@@ -38,6 +38,10 @@ $on-palm: 600px;
 $on-laptop: 800px;
 $on-desktop: 1600px;
 
+// The header resizes at this point and gets exactly 8px smaller
+$mdl-trans: 1024px;
+$mdl-trans-offset: -8px;
+
 @mixin media-query-min($device) {
 	@media screen and (min-width:$device) {
 		@content;
