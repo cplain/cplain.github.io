@@ -1,0 +1,21 @@
+<div id="site-ribbon" class="site-ribbon"></div>
+<script>
+	window.requestAnimationFrame = window.requestAnimationFrame
+	 || window.mozRequestAnimationFrame
+	 || window.webkitRequestAnimationFrame
+	 || window.msRequestAnimationFrame
+	 || function(f){setTimeout(f, 1000/60)}
+	 
+	var ribbon = document.getElementById('site-ribbon')
+	var layout = document.getElementById('layout')
+	var offsetTop = ribbon.offsetTop
+
+	function parallax(){
+		ribbon.style.top = offsetTop - (layout.scrollTop * .5) + 'px'
+	}
+	 
+	layout.addEventListener('scroll', function(){
+		requestAnimationFrame(parallax)
+	}, false)
+
+</script>
