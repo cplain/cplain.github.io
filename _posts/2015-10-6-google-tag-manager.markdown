@@ -175,7 +175,7 @@ Nothing new there, we have taken out GTM's receiver in place of our own.
 
 But lets take a look at `PassthroughReceiver`
 
-{% highlight xml %}
+{% highlight java %}
 public class PassthroughReceiver extends BroadcastReceiver {
     private final BroadcastReceiver[] mReceivers;
 
