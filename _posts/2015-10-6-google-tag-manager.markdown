@@ -93,9 +93,8 @@ Under the four key values we can see "More Settings", and in here we can set our
 
 &nbsp;
 
-~~~
-Note: Also further down we can see a place for custom dimensions, these work in a similar fashion but you are limited to a set number. They also do not have a text-based key, you will have to use an index.
-~~~
+
+> Note: Also further down we can see a place for custom dimensions, these work in a similar fashion but you are limited to a set number. They also do not have a text-based key, you will have to use an index.
 
 &nbsp;
 
@@ -115,9 +114,7 @@ And we are done! We can now see the screen name for each click in GA by adding t
 
 &nbsp;
 
-~~~
-Note: in the case of screen name, the real-time value is different from the value you will see in your actual metrics. This is because the real-time value is actually the current screen the owner of that hit is on. This is unfortunate as it means you need to wait 24 hours until you can see your new values coming through.
-~~~
+> Note: in the case of screen name, the real-time value is different from the value you will see in your actual metrics. This is because the real-time value is actually the current screen the owner of that hit is on. This is unfortunate as it means you need to wait 24 hours until you can see your new values coming through.
 
 &nbsp;
 
@@ -222,9 +219,7 @@ This feature allows us to capture two different types of exceptions, caught and 
 
 &nbsp;
 
-~~~
-Note: this is not a good tool for debugging crashes. Something like Crashlytics adds much more value than whatever GA can provide. So while it might be tempting to consolidate your tools, do not punish yourself by going through with whatever plan you may be dreaming up. The purpose of this feature is to consolidate metrics not functionality. Do not fear however, we will also ensure that our analytics does not conflict with whatever crash reporting tool we may be using.
-~~~
+> Note: this is not a good tool for debugging crashes. Something like Crashlytics adds much more value than whatever GA can provide. So while it might be tempting to consolidate your tools, do not punish yourself by going through with whatever plan you may be dreaming up. The purpose of this feature is to consolidate metrics not functionality. Do not fear however, we will also ensure that our analytics does not conflict with whatever crash reporting tool we may be using.
 
 &nbsp;
 
@@ -256,9 +251,7 @@ So we have a description, we also have a trigger set to fire on our new event `f
 
 &nbsp;
 
-~~~
-Note: I have also set a default value for the description variable. This is a useful feature but pretty self explanatory. You may be able to think of a few cases in the previous articles were we could have used this option instead of doing it in code. There are pros and cons for either method but really you should be doing things this way as GTM should encapsulate all business rules to promote flexibility.
-~~~
+> Note: I have also set a default value for the description variable. This is a useful feature but pretty self explanatory. You may be able to think of a few cases in the previous articles were we could have used this option instead of doing it in code. There are pros and cons for either method but really you should be doing things this way as GTM should encapsulate all business rules to promote flexibility.
 
 &nbsp;
 
@@ -365,9 +358,7 @@ Fantastic! And if we click into our application version we can get a bit more in
 
 &nbsp;
 
-~~~
-Note: Crashes and exceptions are not under the real-time banner. We have to wait 24 hours before we see crashes show in GA
-~~~
+> Note: Crashes and exceptions are not under the real-time banner. We have to wait 24 hours before we see crashes show in GA
 
 &nbsp;
 

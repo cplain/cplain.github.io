@@ -21,9 +21,7 @@ Today, I will be kicking off a series of articles to look at Google Tag Manager 
 
 &nbsp;
 
-~~~
-Note: During the course of this series I will be showing real ids and values, this is to help you see what values are important and where they go. They will all be long deleted before you read them.
-~~~
+> Note: During the course of this series I will be showing real ids and values, this is to help you see what values are important and where they go. They will all be long deleted before you read them.
 
 &nbsp;
 
@@ -41,9 +39,7 @@ There are three core benefits of GTM:
 
 &nbsp;  
 
-~~~
-Tip: If you only want a limited set of tracking to start, build the clients to track everything within reason. Then you can limit the tracking at the GTM layer. Which means GTM can be changed to send it through when people inevitably change their minds. No code changes or client launches required!
-~~~
+> Tip: If you only want a limited set of tracking to start, build the clients to track everything within reason. Then you can limit the tracking at the GTM layer. Which means GTM can be changed to send it through when people inevitably change their minds. No code changes or client launches required!
 
 &nbsp;
 
@@ -57,9 +53,7 @@ GTM has only three core elements we need to understand. **The Container**, **The
 
 &nbsp;  
 
-~~~
-Just repeating myself: This section will be an overview, my aim here is to show you what everything looks like and what to expect. We will go into more depth in the next articles in the context of setting up some tracking in an example client.
-~~~
+> Just repeating myself: This section will be an overview, my aim here is to show you what everything looks like and what to expect. We will go into more depth in the next articles in the context of setting up some tracking in an example client.
 
 &nbsp;
 
@@ -72,10 +66,8 @@ Each client holds onto a version of the container which it will update periodica
 
 &nbsp;
 
-~~~
-By default, the container becomes eligible to be refreshed every 12 hours. We can however
+> By default, the container becomes eligible to be refreshed every 12 hours. We can however
 manually refresh the container if we desire.
-~~~
 
 &nbsp;
 
@@ -125,9 +117,7 @@ The side bar will only be visible in the **Container Tab**, it is however someth
 
 &nbsp;
 
-~~~
-Search, Overview and Folders are not relevant to the content of this article, they are a discussion for another time.
-~~~
+> Search, Overview and Folders are not relevant to the content of this article, they are a discussion for another time.
 
 &nbsp;
 
@@ -157,9 +147,7 @@ In our example we will just deal with a single Google Analytics account. GA is w
 
 &nbsp;
 
-~~~
-A quick note on talking to GA in real-time: A real-time event is visible in GA for 30 minutes before it leaves. After that 30 minutes the event is not viewable until 24 hours later when it appears as part of the daily reports and figures. This is just how GA works as it needs to run processing etc on all the daily figures to generate meaningful reports and statistics.
-~~~
+> A quick note on talking to GA in real-time: A real-time event is visible in GA for 30 minutes before it leaves. After that 30 minutes the event is not viewable until 24 hours later when it appears as part of the daily reports and figures. This is just how GA works as it needs to run processing etc on all the daily figures to generate meaningful reports and statistics.
 
 &nbsp;
 

@@ -47,9 +47,7 @@ I have gone ahead and stuck "Example" as my account name. You however might want
 
 &nbsp;
 
-~~~
-While you definitely can have one GTM container that handles multiple clients (of the same platform), it is generally considered poor practice. You most likely never want a single out of the box analytics experience. If you have two apps that are very similar consider copying the container (I will discuss how to do this later) and making modifications per specific client. 
-~~~
+> While you definitely can have one GTM container that handles multiple clients (of the same platform), it is generally considered poor practice. You most likely never want a single out of the box analytics experience. If you have two apps that are very similar consider copying the container (I will discuss how to do this later) and making modifications per specific client. 
 
 &nbsp;
 
@@ -221,9 +219,7 @@ Well now we know how to create variables and what the two key types are, lets ma
 
 &nbsp;
 
-~~~
-You probably noticed a lot of these examples are for screen elements that aren't necessarily buttons. I never said I was going to do ONLY buttons with a single tag did I? 
-~~~
+> You probably noticed a lot of these examples are for screen elements that aren't necessarily buttons. I never said I was going to do ONLY buttons with a single tag did I?
 
 &nbsp;
 
@@ -277,9 +273,8 @@ Notice the **Event** variable. We haven't seen this guy yet. As I mentioned in t
 
 &nbsp;
 
-~~~
-If you have your smart pants on today you are probably thinking to yourself that "pageView" would be perfect for a constant. And you would be right! This is just one of the many more values we will encounter that would be constants in the real world but I am leaving as their actual values here for simplicities sake.
-~~~
+> If you have your smart pants on today you are probably thinking to yourself that "pageView" would be perfect for a constant. And you would be right! This is just one of the many more values we will encounter that would be constants in the real world but I am leaving as their actual values here for simplicities sake.
+
 &nbsp;
 
 Now when we click **Create Trigger** we will see our brand new Trigger ready to go. 
@@ -346,9 +341,7 @@ Our dialog here is pretty simple. We can attach as many triggers as we want. In 
 
 &nbsp;
 
-~~~
-Note: A tag will activate if any one of its attached triggers fires. Attaching multiple triggers does not mean your tag holds out until all triggers are true. There is no support for this, you would need to make a third trigger with all the constraints of the other two. However if more than one trigger is true in a single event, your tag will still only fire the once.
-~~~
+> Note: A tag will activate if any one of its attached triggers fires. Attaching multiple triggers does not mean your tag holds out until all triggers are true. There is no support for this, you would need to make a third trigger with all the constraints of the other two. However if more than one trigger is true in a single event, your tag will still only fire the once.
 
 &nbsp;
 
