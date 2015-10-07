@@ -11,7 +11,7 @@ Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working th
 
 &nbsp;  
 
-<div class="mdl-grid">
+<div class="mdl-grid about-grid">
 	{% for brand in page.brands %}
 
 	<div class="mdl-cell mdl-cell--2-col mdl-shadow--4dp">
