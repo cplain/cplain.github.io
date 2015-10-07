@@ -5,7 +5,6 @@ subtitle: Some extra goodies for our bags
 tags: Android GTM Analytics Google_Analytics Google_Tag_Manager
 author: Coby Plain
 res: /assets/2015-10-06-google-tag-manager
-hide: true
 ---
 
 ---
@@ -18,7 +17,7 @@ hide: true
 
 ##Series Overview
 
-**Google Tag Manager** (GTM) is a layer of separation over other analytics suites. It serves as a distribution gateway that will receive notifications from clients and then uses its own logic to construct and fire tracking events at any number of analytics tools. We will be taking a look at GTM over the next few articles, and by the end of this series we will have a working Tag Manager implementation in Android! If you are looking into GTM for iOS, the first few articles will be identical for you, it is only the client-side implementation that changes. For web, the core concepts and meanings are the same.
+**Google Tag Manager** (GTM) is a layer of separation over other analytics suites. It serves as a distribution gateway that will receive notifications from clients and then use its own logic to construct and fire tracking events at any number of analytics tools. We will be taking a look at GTM over the next few articles, and by the end of this series we will have a working Tag Manager implementation for Android! If you are looking into GTM for iOS, the first few articles will be identical for you, it is only the client-side implementation that changes. For web, the core concepts and meanings are the same.
 
 &nbsp;
 
@@ -26,13 +25,13 @@ hide: true
 
 ##Extra Data
 
-Sometimes having simply a category, action, label and value just isn't enough. GA has a wealth of additional dimensions that can add a lot of valuable information into the mix. Conveniently a lot are set for us right out of the box! However not as conveniently, the majority aren't. Wouldn't it be great if we could simply set whatever ones we need when we fire our tags? Well as it happens, we can. This is probably one of the quickest enhancements you can make to your tracking and could be a lifesaver when it comes to analysing data and making decisions. You don't want to be in a position where you have a question but no data to answer it.
+Typical GA events allow for a category, action, label and value, but sometimes this just isnt enough. GA has a wealth of additional dimensions that can add a lot of valuable information into the mix. Conveniently a lot of these are set for us right out of the box! However not as conveniently the majority aren't. Wouldn't it be great if we could simply set whatever ones we need when we fire our tags? Well as it happens, we can. This is probably one of the quickest enhancements you can make to your tracking and could be a lifesaver when it comes to analysing data and making decisions. You don't want to be in a position where you have a question but no data to answer it.
 
 &nbsp;
 
 ### How to do it
 
-First thing's first, we need to send through the data from the client. This will look very familiar to anyone who has been following the series, we are just adding additional data layer variables.
+First thing's first, we need to send through the data from the client. This will look very familiar to anyone who has been following the series - we are just adding additional data layer variables.
 
 &nbsp;
 
@@ -73,7 +72,7 @@ Nothing unexpected there at all. We are sending through our page name using the 
 
 &nbsp;
 
-All we need now is to receive our new field in GTM and find a way to pass it through to GA. That normally would mean its time for a new variable, but in this case our variable is set up previously. Very convenient for us!
+All we need now is to receive our new field in GTM and find a way to pass it through to GA. That normally would mean its time for a new variable, but in this case our variable was previously set up. Very convenient for us!
 
 &nbsp;
 
@@ -124,15 +123,15 @@ And we are done! We can now see the screen name for each click in GA by adding t
 
 The majority of developers will have the luxury of knowing that every user installs their production app from the Google Play Store. But there are multiple ways a user could arrive to that install page. They could have clicked on a link in a mailer you set out, they could have followed an ad or maybe they found it through your website. 
 
-Often we will want to know where our users came from. Quite obviously this information lets us know how our different advertising are streams are performing, but this this just the beginning. When combined with segments it can give us insights into how users coming from different mechanisms behave. We can look at their expectations and identify their unique pain points. Perhaps a particular ad draws in a demographic entirely different to your original user-base, what sold the app to them? What are they looking for? How can you capitalise on that? Knowing where they came from is the first step opening up these opportunities.
+Often we will want to know where our users came from. Quite obviously this information lets us know how our different advertising streams are performing, but this is just the beginning. When combined with segments it can give us insights into how users coming from different mechanisms behave. We can look at their expectations and identify their unique pain points. Perhaps a particular ad draws in a demographic entirely different to your original user-base, what sold the app to them? What are they looking for? How can you capitalise on that? Knowing where they came from is the first step in opening up these opportunities.
 
-Thankfully install referrer tracking is very easy to implement in GTM. So easy in fact I'm going to take this chance to cover a common problem when working in this space as well.
+Thankfully install referrer tracking is very easy to implement in GTM. So easy in fact that I'm going to take this chance to cover a common problem when working in this space as well.
 
 &nbsp;
 
 ### How to do it
 
-When a user opens your app for the first time, Google will send an intent that contains all the referrer information. We simply need to receive this information and send it through to GTM. Even simpler GTM has provided the receiver for us! We just need to add the following in our AndroidManifest.
+When a user opens your app for the first time, Google will send an `Intent` that contains all the referrer information. We simply need to receive this information and send it through to GTM. GTM makes this as simple as possible by providing a receiver for us! We just need to add the following in our AndroidManifest.
 
 &nbsp;
 
@@ -152,7 +151,7 @@ That is about as painless as it gets. With this receiver in place we have our in
 
 However there is one drawback, only one Receiver can register itself for this intent. If we want multiple receivers we are in trouble and it is surprising how frequently this can come up.
 
-Fortunately it is a simple fix as well. We need to create our own receiver and from there fire everything we want.
+Fortunately there is a simple fix for this as well. We need to create our own receiver and from there fire everything we want.
 
 &nbsp;
 
@@ -199,7 +198,7 @@ public class PassthroughReceiver extends BroadcastReceiver {
 
 &nbsp;
 
-So pretty easy! When our receiver is created by the OS we construct an array of everything we want to trigger. Then when the broadcast occurs we can loop through each one and trigger it. That's all there is to it so now you have no excuse to not be tracking your install referrer.
+Pretty easy! When our receiver is created by the OS we construct an array of everything we want to trigger. Then when the broadcast occurs we can loop through each one and trigger it. That's all there is to it so now you have no excuse to not be tracking your install referrer.
 
 &nbsp;
 
@@ -247,7 +246,7 @@ Let's start with the container. We are going to need a new variable and also a n
 
 &nbsp;
 
-So we have a description, we also have a trigger set to fire on our new event `fatalException`. Note here that we do not have a variable for a stack-trace. This is not sent up for us automatically either, we simply do not get one. This is important and part of the reason I said above this is **not** a debugging tool. GA is not designed to view stack-traces and this feature is not intended to capture them. Our description can give us some information and our secondary dimensions can give us a little more (possibly enough to debug the simplest of issues), but that is the extent.
+So we have a description and we also have a trigger set to fire on our new event `fatalException`. Note here that we do not have a variable for a stack-trace. This is not sent up for us automatically either, we simply do not get one. This is important and part of the reason I said above this is **not** a debugging tool. GA is not designed to view stack-traces and this feature is not intended to capture them. Our description can give us some information and our secondary dimensions can give us a little more (possibly enough to debug the simplest of issues), but that is the extent.
 
 &nbsp;
 
@@ -415,7 +414,7 @@ And there we have it! Tracking our crashes through GA via GTM, an interesting me
 
 ## Summary
 
-These are just a handful of features available to us using GTM with new ones being added constantly. I'd encourage you to have a play and see just what is available to you. Most developers know analytics isn't the most interesting of topics (myself being one of them) and as such it is often very poorly done. However in my time investigating GTM, and analytics in general, I have found that if implemented correctly, analytics tools can provide amazing insights into how people interact with your app. It informs and powers decisions and often challenges your assumptions. 
+These are just a handful of features available to us using GTM with new ones being added constantly. I'd encourage you to have a play and see just what is available to you. Most developers have the impression that analytics isn't the most interesting of topics (I was one of them) and as such it is often very poorly done. However in my time investigating GTM and analytics in general, I have found that if implemented correctly, analytics tools can provide amazing insights into how people interact with your app. It informs and powers decisions and often challenges your assumptions. 
 
 In this series I have covered the basics, but it is in no way a complete analytics solution. To truly gain value from your analytics you need to think about what you want to achieve, how you will know if you have achieved it and what questions you will be asking if you don't. If what you are tracking does not provide answers to these areas then you need to stop and rethink what you are doing.
 
