@@ -9,13 +9,13 @@ res: /assets/2015-09-30-google-tag-manager
 
 ---
 
-We now have a great understainding of [what GTM is][Part 1] and [how to set it up][Part 2]! This time we will be looking at how to configure an Android app to talk to our container from the previous article.
+We now have a great understanding of [what GTM is][Part 1] and [how to set it up][Part 2]! This time we will be looking at how to configure an Android app to talk to our container from the previous article.
 
 <!--end_excerpt-->
 
 &nbsp;
 
-###Series Overview
+##Series Overview
 
 **Google Tag Manager** (GTM) is a layer of separation over other analytics suites. It serves as a distribution gateway that will receive notifications from clients and then uses its own logic to construct and fire tracking events at any number of analytics tools. We will be taking a look at GTM over the next few articles, and by the end of this series we will have a working Tag Manager implementation in Android! If you are looking into GTM for iOS, the first few articles will be identical for you, it is only the client-side implementation that changes. For web, the core concepts and meanings are the same.
 
@@ -23,13 +23,13 @@ We now have a great understainding of [what GTM is][Part 1] and [how to set it u
 
 ---
 
-###Configuring the app
+##Configuring the app
 
 Running GTM in an app can be extraordinarily simple, but it can also present quite a few challenges and hidden surprises depending on what you are trying to do. So best to think about all elements of your app when you start connecting in GTM. Just like any component of any codebase also make time to think about how your usages might change in the future and mitigate as many risks as you can with careful planning.
 
 &nbsp;
 
-####Step One: Installing the SDK
+###Step One: Installing the SDK
 
 Probably the easiest part of the whole process. You just need to add the following line to your **build.gradle**.
 
@@ -41,7 +41,7 @@ If you already have the whole play services bundle compiling then don't bother w
 
 &nbsp;
 
-####Step Two: Creating a TagManager
+###Step Two: Creating a TagManager
 
 Creating a TagManager is very simple, however before we rush into it, we need to think about **how** and **where** we construct our TagManager. There are two big points to consider when we create our TagManager:
 
@@ -154,7 +154,7 @@ Quite a lot simpler. We are just returning a fake TagManager that will not give 
 
 &nbsp;
 
-####Step Three: Using the TagManager
+###Step Three: Using the TagManager
 
 The last step where we have to do something! Once this is set up we can sit back and watch the analytics data roll in. There will be two tracking methods we want to create. One for page views and one for clicks. Using an MVP pattern we can put these in our base presenter class. Our presenters should be aware of every single action that happens in the app so it makes a lot of sense for our methods to live there.
 
@@ -256,7 +256,7 @@ This time we have two methods, one doing the tracking and one providing a defaul
 
 &nbsp;
 
-####Step Four: Reap the rewards
+###Step Four: Reap the rewards
 
 Lets check in on our GA account shall we?
 
