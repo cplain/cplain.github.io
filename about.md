@@ -7,7 +7,7 @@ brands: ['brand-asuper', 'brand-carsguide', 'brand-commbank', 'brand-corelogic',
 brand_urls: ['https://www.australiansuper.com/', 'http://www.carsguide.com.au/', 'https://www.commbank.com.au/', 'http://www.corelogic.com.au/', 'https://www.paypal.com/', 'http://www.qantas.com.au/', 'http://tedxsydney.com/', 'https://www.telstra.com.au/']
 ---
 
-Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've built a number of apps with fantastic brands such as:
+Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've built a number of apps with some truly fantastic brands such as:
 
 &nbsp;  
 
@@ -28,5 +28,10 @@ Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working th
 
 I love learning new and funky things and want to share everything I can with anyone I can. Hopefully in my time I've come across something you will find useful!
 
+&nbsp;
+
+I'm no web developer but if you want to see how this site is built [you are welcome to view the source here][Github Blog]
+
 
 [Vivant]: http://vivant.com.au/
+[Github Blog]: https://github.com/cplain/cplain.github.io
