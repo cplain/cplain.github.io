@@ -3,8 +3,7 @@ layout: page
 title: About
 permalink: /about/
 res: /assets/about
-brands: ['brand-asuper', 'brand-carsguide', 'brand-commbank', 'brand-corelogic', 'brand-paypal', 'brand-quantas', 'brand-tedx', 'brand-telstra']
-brand_urls: ['https://www.australiansuper.com/', 'http://www.carsguide.com.au/', 'https://www.commbank.com.au/', 'http://www.corelogic.com.au/', 'https://www.paypal.com/', 'http://www.qantas.com.au/', 'http://tedxsydney.com/', 'https://www.telstra.com.au/']
+brands: ["brand-asuper=https://www.australiansuper.com/", 'brand-carsguide=http://www.carsguide.com.au/', 'brand-commbank=https://www.commbank.com.au/', 'brand-corelogic=http://www.corelogic.com.au/', 'brand-paypal=https://www.paypal.com/', 'brand-quantas=http://www.qantas.com.au/', 'brand-tedx=http://tedxsydney.com/', 'brand-telstra=https://www.telstra.com.au/']
 ---
 
 Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've been lucky enough to work with some truly fantastic brands including:
@@ -15,8 +14,9 @@ Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working th
 	{% for brand in page.brands %}
 
 	<div class="mdl-cell mdl-cell--2-col mdl-shadow--4dp">
-		<a class="mdl-button mdl-js-button mdl-js-ripple-effect about-button" href="{{ page.brand_urls[forloop.index0] }}">
-			<img src="{{ page.res }}/{{ brand }}.png" />
+		{% assign componenets = brand | split:"=" %}
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect about-button" href="{{ componenets[1] }}">
+			<img src="{{ page.res }}/{{ componenets[0]}}.png" />
 		</a>
 	</div>
 
