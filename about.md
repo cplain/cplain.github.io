@@ -21,7 +21,6 @@ Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working th
 	</div>
 
 	{% endfor %}
-
 </div>
 
 &nbsp;
