@@ -7,7 +7,7 @@ brands: ['brand-asuper', 'brand-carsguide', 'brand-commbank', 'brand-corelogic',
 brand_urls: ['https://www.australiansuper.com/', 'http://www.carsguide.com.au/', 'https://www.commbank.com.au/', 'http://www.corelogic.com.au/', 'https://www.paypal.com/', 'http://www.qantas.com.au/', 'http://tedxsydney.com/', 'https://www.telstra.com.au/']
 ---
 
-Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've built a number of apps with some truly fantastic brands such as:
+Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've been lucky enough to work with some truly fantastic brands including:
 
 &nbsp;  
 
