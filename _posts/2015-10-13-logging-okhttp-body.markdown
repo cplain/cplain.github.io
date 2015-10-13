@@ -23,7 +23,7 @@ So to solve our problem we need the right tool; time to meet our friend the `Int
 
 &nbsp;
 
-`Interceptor` is an OkHttp interface that, as the name suggests, allows us to intercept requests and responses. This gives us the ability to both read and modify our outgoing and incoming calls. There are a number of uses for this from applying headers to changing data, today however we will focusing on how it can give us back our logging. So lets get started!
+`Interceptor` is an OkHttp interface that, as the name suggests, allows us to intercept requests and responses. This gives us the ability to both read and modify our outgoing and incoming calls. There are a number of uses for this from applying headers to changing data. Today however we will focusing on how it can give us back our logging. So lets get started!
 
 &nbsp;
 
@@ -38,7 +38,11 @@ okHttpClient.networkInterceptors().add(new LoggingInterceptor());
 
 &nbsp;
 
-Looks pretty straightforward so far. I've created a `LoggingInterceptor` which is a custom class, and then I have applied it to my OkHttp client, this will then be used later when I was to initialise Retrofit. For most readers this is nothing new, all the real fun will happen inside `LoggingInterceptor`. As a note: `okHttpClient.networkInterceptors()` will return a list, this means you have the ability to add multiple interceptors. This means you can avoid creating one interceptor to solve all your problems and instead focus on creating tight, focused, reusable interceptors.
+Looks pretty straightforward so far. I've created a `LoggingInterceptor`, a custom class, which I apply to my OkHttp client. The client will then be used later when I initialise Retrofit. For most readers this is nothing new, all the real fun will happen inside `LoggingInterceptor`.
+
+&nbsp;
+
+> As a note: `okHttpClient.networkInterceptors()` will return a list which will allow us to add multiple interceptors. This means we can avoid creating one interceptor to solve all our problems and instead focus on creating tight, focused, reusable interceptors.
 
 &nbsp;
 
@@ -71,11 +75,11 @@ The `Interceptor` interface requires just one method, `intercept()`. This method
 
 &nbsp;
 
-From the `Chain` we can pull a `Request` object using `chain.request()`, this will allow us access to the body, method type (get, post, put, etc), url, headers and so on. Once we are finished, we can call `chain.proceed(request)` which will fire the request off to the network stack and eventually return with a `Response`. It is important to note that if we needed, we *could* send any `Request` we felt like, it needn't have anything to do with the original request in the chain.
+From the `Chain` we can pull a `Request` object using `chain.request()`. `Request` opens up access to the body, url, headers, method type (get, post, put, etc) and so on. Once we are finished we can call `chain.proceed(request)` which will fire the request off to the network stack and eventually return with a `Response`. It is important to note that we can send any `Request` object we felt like, it needn't have anything to do with the original request in the chain.
 
 &nbsp;
 
-From `chain.proceed(request)` we retrieve our `Response`. Similar to `Request` this will give us access to headers, bodies, error codes and so on (note you still need `request` to log the url or request method). When we are finished, instead of passing it up the chain, we return the `response` to the rest of the network stack (again this can be a different response).
+From `chain.proceed(request)` we retrieve our `Response`. Similar to `Request` this will give us access to headers, bodies, error codes and so on (it doesn't contain the url or request method). When we are finished we `return` the `response` to the rest of the network stack (again this can be a different response).
 
 &nbsp;
 
@@ -87,11 +91,11 @@ So we know the foundations, but there are still a few pitfalls ahead of us. Time
 
 &nbsp;
 
-Lets say we have a requirement to log all our network errors. But unlike a typical dump we want only a few fields in our response as these will be sent through for tracking. Thankfully all our errors *should* return a body in a standard format which contains amongst other things a message we want to log.
+Lets say we have a requirement to log all our network errors. But unlike a typical dump we want only a one field from our response. Thankfully all our errors *should* return a body in a standard format which contains amongst other things a message we want to log.
 
 &nbsp;
 
-Shockingly it seems a little contrived, but lets see what kind of issues this may draw out. 
+Shockingly our problem seems a little contrived, but lets see what kind of issues this may draw out.
 
 &nbsp;
 
@@ -112,7 +116,7 @@ public class ErrorResponse {
 
 &nbsp;
 
-This looks like every other class using Gson, I'm not going to waste time here, but now we know what we are dealing with.
+This looks like every other class using Gson so I'm not going to waste time here, but now we know what we are dealing with.
 
 &nbsp;
 
@@ -141,7 +145,7 @@ Again nothing earth-shattering here, what we actually do with our values could b
 
 &nbsp;
 
-Finally we have all the components we need, time to get back to our `Interceptor`:
+We now have all the components we need, time to get back to our `Interceptor`:
 
 {% highlight java %}
 public class LoggingInterceptor implements Interceptor {
@@ -166,7 +170,7 @@ public class LoggingInterceptor implements Interceptor {
 
 &nbsp;
 
-When the response comes in we are using `response.isSuccessful()` to determine if we have received an error or not. This will be true only if we receive a 200 class response code. From there we retrieve the response code via `response.code()` and parse it into a `String` (this will make more sense later). We are then taking our body and parsing it using Gson into an `ErrorResponse` and finally we push all our values through to our tracking method.
+When the response comes in we are using `response.isSuccessful()` to determine if we have received an error or not. This will be true only if we receive a 200 class response code. From there we retrieve the response code via `response.code()` and parse it into a `String` (this will make more sense later). We then take our body and parse it via Gson into an `ErrorResponse`. Finally we push all our values through to our tracking method.
 
 &nbsp;
 
@@ -220,11 +224,11 @@ public class LoggingInterceptor implements Interceptor {
 
 &nbsp;
 
- We are catching `SocketTimeoutException` and passing through some custom values for a network timeout. All other possible errors we are tracking as a generic device issue (although we could keep going). This opens up a whole new class of error leading to considerable insight, definitely useful in our logs.
+ We are catching `SocketTimeoutException` and passing through some custom values for a network timeout. All other possible errors we are tracking as a generic device issue (although we could keep going). This opens up a whole new class of error, definitely useful in our logs!
 
 &nbsp;
 
-> Note: Hopefully using `String` for our error cause makes a lot more sense now as we are not just passing int based error codes.
+> Note: Hopefully the earlier decision to use `String` for our "cause" makes a lot more sense now as we are not just passing int based error codes.
 
 &nbsp;
 
@@ -232,7 +236,7 @@ public class LoggingInterceptor implements Interceptor {
 
 ## And the leg...
 
-The next biggest issue is also an oversight. While we may have been promised all our errors will have a body that matches `ErrorResponse`, what happens if they don't? If parsing fails Gson will throw an `IOException`,which will cause our code to fall into the `Device Connection Failure` catch block. That means we miss the real cause of our problem and instead get a parsing exception in our logs. Not particularly useful...
+The next biggest issue also stems from an oversight. While we may have been promised that all our errors will have a body matching `ErrorResponse`, what happens if they don't? If parsing fails Gson will throw an `IOException` which will cause our code to fall into the `Device Connection Failure` catch clause. That means we miss the real cause of our problem and instead get a parsing exception in our logs. Not particularly useful...
 
 &nbsp;
 
@@ -276,7 +280,7 @@ public Response intercept(Chain chain) throws IOException {
 
 &nbsp;
 
-So here we are using a `try/catch` block to protect against conversion issues, in the case we get one, we track an unknown error. Now our logging will focus on the real problem and not our parsing!
+So here we are using a `try/catch` block to protect against conversion issues, in the case we get one, we track an unknown error. Now our logging will focus on the real network problem and not the parsing!
 
 &nbsp;
 
@@ -288,11 +292,11 @@ The last two problems have been oversights that lead to us missing out on useful
 
 &nbsp;
 
-This is a big problem, but fortunately there is a solution. We need to return a new request with a shiny new body. However we must make sure to be careful when we do this. Our current code is in a `try/catch` block, for safety's sake we should make sure to put this new response in a `finally` clause.
+This is a big problem, but fortunately there is a solution! We need to return a new request with a shiny new body. However we must make sure to be careful when we do this. Our current code is in a `try/catch` block, for safety's sake we should make sure to put this new response in the `finally` clause.
 
 &nbsp;
 
-Lets look at our updated `trackError()`
+Lets look at our updated `trackError()`:
 
 {% highlight java %}
 private Response trackError(Request request, Response response) {
@@ -308,14 +312,12 @@ private Response trackError(Request request, Response response) {
         errorMessage = "Unknown error";
     } finally {
         ResponseBody body = ResponseBody.create(response.body().contentType(), responseBodyString);
-
         response = response.newBuilder()
                         .body(body)
                         .build();
     }
 
     trackError(request, cause, errorMessage);
-
     return response;
 }
 {% endhighlight %}
@@ -342,7 +344,7 @@ public Response intercept(Chain chain) throws IOException {
 
 &nbsp;
 
-So now we are creating a new `Response` which we will use as a replacement for our used one. Note that while `response.newBuilder()` will copy across the body, thanks to the magic of pointers it will be the same unusable body as in our existing response. That is why we make pains to recreate a `ResponseBody` object from the `responseString`
+So now we are creating a new `Response` which we will use as a replacement for our used one. Note that while `response.newBuilder()` will copy across the body, thanks to the magic of pointers it will be the same unusable body as in our existing response. That is why we make pains to recreate a `ResponseBody` object from the `responseString`.
 
 &nbsp;
 
@@ -371,7 +373,7 @@ public class LoggingInterceptor implements Interceptor {
 
         try {
             response = chain.proceed(request);
-             if (!response.isSuccessful()) {
+            if (!response.isSuccessful()) {
                 response = trackError(response, request);
             }
         } catch (SocketTimeoutException e) {
@@ -398,14 +400,12 @@ public class LoggingInterceptor implements Interceptor {
             errorMessage = "Unknown error";
         } finally {
             ResponseBody body = ResponseBody.create(response.body().contentType(), responseBodyString);
-
             response = response.newBuilder()
                             .body(body)
                             .build();
         }
 
         trackError(request, cause, errorMessage);
-
         return response;
     }
 
@@ -417,4 +417,3 @@ public class LoggingInterceptor implements Interceptor {
     }
 }
 {% endhighlight %}
-
