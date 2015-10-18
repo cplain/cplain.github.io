@@ -10,7 +10,7 @@ hide: true
 
 ---
 
-Gradle is one of the most useful, powerful and misused tools at an Android developer's disposal. Thankfully there are plenty of smart people out there that have written fantastic material on how to improve our scripts. Amongst these posts I have searched for one tip in particular, how to better manage flavours and variants, alas the article has never come. So recently I decided just couldn't take it anymore and I went on a quest to solve it for myself. 
+Gradle is one of the most useful, powerful and misused tools at an Android developer's disposal. Thankfully it has become quite a well discussed topic and there is  a lot of material out there for improving our scripts. Alas, despite this quantity I had not found and acceptable solution to managing my flavours and variants. So recently I decided just couldn't take it anymore and I went on a quest to solve it for myself.
 
 <!--end_excerpt-->
 
@@ -24,11 +24,11 @@ Gradle is one of the most useful, powerful and misused tools at an Android devel
 
 ## What are we trying to solve?
 
-Interestingly enough our problem starts with a pretty cool solution. It is more than common for us to need different configurations of our apps for various reason. Often these will have different environments, features, timings and so on. 
+Interestingly enough our problem starts with a pretty cool solution. It is quite common for us to need different configurations of our apps for various reasons. Often each one will differ in a few core ways; different environments, features, timings and so on.
 
 &nbsp;
 
-More often than not you will want this in two dimensions. Say you want to test your app pointing to three different environments, you will need to see how they handle in a full release configuration (obfuscation, cert pinning, tighter timeouts, etc) but having those options always on will hamper your actual development. Meaning you want to be able to switch between the different environments, but also between release and debugging configurations.
+More often than not you will want this in two dimensions. Say you want to test your app pointing to three different environments (develop, staging and production), you will need to see how they handle in a full release configuration (obfuscation, cert pinning, tighter timeouts, etc) but having those options always on will hamper your actual development. Meaning you want to be able to switch between the different environments but also between release and debugging configurations.
 
 &nbsp;
 
@@ -40,7 +40,7 @@ Thankfully Gradle has us covered with **variants** and **flavours**.
 
 ## A simple approach
 
-When producing builds we can create our app in any variant and flavour combination we would like. Depending on what configuration we have set, Gradle will populate our `BuildConfig` class with a set of default values. Below I have my variant set to `debug` and my flavour set to `staging`:
+When producing builds we can create our app in any variant and flavour combination we would like. Depending on what configuration we have chosen Gradle will populate our `BuildConfig` class with a set of default values. Below I have my variant set to `debug` and my flavour set to `staging`:
 
 &nbsp;
 
@@ -57,7 +57,7 @@ public final class BuildConfig {
 
 &nbsp;
 
-This is your default `BuildConfig` class, at first glance we can see it is pretty useful. We have access to our version names and codes as well as what flavour/variant combo we have active. Now if we desired, we could control sections of our code through `if` or `switch` statements:
+This is your default `BuildConfig` class. At first glance we can see it is pretty useful, we have access to our version names and codes as well as what flavour/variant combo we have active. Now if we desired, we could control sections of our code through `if` or `switch` statements:
 
 &nbsp;
 
@@ -72,7 +72,7 @@ if (BuildConfig.FLAVOUR.equals("staging")) {
 
 &nbsp;
 
-**But thats awful you should be saying, don't do that!!!** And you would be right, now our code is heavily tied up with our build configuration. Using this method we have no idea what values are linked to what configuration without extensive knowledge of the code. When we go to add or remove a new configuration we have no idea what pain we could unleash. There is a better way! 
+**But thats awful you should be saying, don't do that!!!** And you would be right. With this solution our code is heavily tied up with our build configuration. All the real differences are scattered across the source; meaning we have no idea what values are linked to our flavours without extensive knowledge of the code. When we go to add or remove a new configuration we have no idea what pain we could unleash, there must be a better way!
 
 &nbsp;
 
@@ -122,11 +122,11 @@ Much nicer! Now our code can now always reference `BuildConfig.BASE_ENDPOINT` wi
 
 &nbsp;
 
-You may notice we also created an app name field which we cant see in `BuildConfig`. As we used `resValue` is it assigned a resource id and now lives with the rest of our resources. As we set the type to `string` we access it via `@string/app_name`. 
+You may notice we also created an app name field which we cant see in `BuildConfig`. As we used `resValue` it is assigned a resource id and now lives under the build folder in a file called `generated.xml`. As we set the type to `string` we access it via `@string/app_name`.
 
 &nbsp;
 
-Notice here that we can define the type of variable we want to set with both methods. We are limited to the different resource types for `resValue`. But when using `buildConfigField` we can use something a bit more advanced if required, simply use the fully qualified name of whatever object or constant you desire.
+Notice here that we can define the type of variable we want to set with both methods. We are limited to the different resource types for `resValue` but when using `buildConfigField` we can use something a bit more advanced if required. Simply use the fully qualified name of whatever object or constant we desire and we have our value!
 
 &nbsp;
 
@@ -144,7 +144,7 @@ public static final java.util.concurrent.TimeUnit NETWORK_TIMEOUT_UNIT = java.ut
 
 &nbsp;
 
-We are definitely making progress! We have one nice clean place where we can see all our values and settings for our different builds. 
+We are definitely making progress! We have one nice clean place where we can see all our values and settings for our different builds. And better still it is totally isolated from the rest of the code!
 
 &nbsp;
 
@@ -152,7 +152,7 @@ But there is a problem to this solution as well. In MVP architecture it is very 
 
 &nbsp;
 
-Different modules have their own variants and flavours, hence their own `BuildConfig` class. So we would need to set up the same code in each module we added. In doing this, some fields may be the same across modules and others new for each module we add. Now we not only have duplication, we start to see a spread in our configurations again. We need to look at the `build.config` of every module just to see what each configuration has in store. We can't change one value without having to check everywhere. We are almost back where we started!
+Different modules have their own variants and flavours, hence their own `BuildConfig` class. So we would need to set up the same code in each module we added. In doing this, some fields may be the same across modules and others new for each module we add. Now we not only have duplication, we start to see a spread in our configurations again. We need to look at the `build.config` of every module just to see what each configuration has in store. We can't change one value without having to check everywhere. It feels like we are back where we started!
 
 &nbsp;
 
@@ -228,11 +228,16 @@ Now despite having two modules we can look at our top-level `build.gradle` to se
 
 &nbsp;
 
-This is where I started when I began my quest. This is how I, and every developer I have worked with, set up build configurations. But there is something... ugly.. about this solution and I have never liked it. If this was Java code, not a single one of us would settle with this solution. And the key reason is duplication. We need to have a {flavour}Field for each different configuration and on top of that we need to maintain our lists of flavours and variants in each file. If I want to add another flavour to this mix I need to go into every `build.gradle` file and update it. For our setup here this isn't the worst of of messes, but in commercial applications we soon see this degrade into pure awful.
+This is where I started when I began my quest. This is how I, and every developer I have worked with, set up build configurations. But there is something... ugly.. about this solution and I have never liked it. If this was Java code, not a single one of us would settle with this solution.
+
+- We have piles of code in each flavour doing almost exactly the same thing.
+- We need to have this weird {flavour}Field for every field in every configuration.
+- If we want to add another flavour we need to go into every `build.gradle` file and manually add it in.
+- It is up to us to keep our values neat and in order. 
 
 &nbsp;
 
-> One other issue I have with this solution is that it is up to us to keep our values neat and in order. Any dev could come in and stick another new value completely outside our neat commented blocks and suddenly things are a lot harder to read. Now this should be caught by code reviews etc, but you can't guarantee you will be around (holidays, other projects, etc) to enforce it when the time comes.
+> To clarify this last point: Any dev could come in and stick another new value completely outside our neatly commented blocks and suddenly things are a lot harder to read. This should be caught by code reviews etc, but you can't guarantee you, or others, will be around (holidays, other projects, etc) to enforce it when the time comes.
 
 &nbsp;
 
@@ -240,7 +245,7 @@ This is where I started when I began my quest. This is how I, and every develope
 
 ## A better way
 
-In an ideal world I could change `stagingBaseEndpoint` and all other variants of that field into `baseEndpoint` and have each flavour uses the right one, forcing everyone to follow a neat grouping in the process. Well actually in an ideal world the fact that there is a `baseEndpoint` for in a unique group should create a flavour for me! But that would be ridiculous.... Wouldn't it?
+In an ideal world I could change `stagingBaseEndpoint` and all other variants of that field into `baseEndpoint` and have each flavour use the right one, forcing everyone to follow a neat grouping in the process. Well actually in an ideal world the fact that there is a `baseEndpoint` in a unique group should create a flavour for me! But that would be ridiculous.... Wouldn't it?
 
 &nbsp;
 
@@ -297,11 +302,11 @@ Brilliant! Thats a nice step forward. We have forced future developers (ourselve
 
 &nbsp;
 
-We still have this weird duplication in each of our flavours. They are doing exactly the same thing with just a minor variation (the array being used). In Java we would immediately make a method to solve this, but things are a little different here. However there is a very nifty solution:
+We still have this weird duplication in each of our flavours. They are doing exactly the same thing with just a minor variation (the array being used). In Java we would immediately make a method to solve this, but things are a little different here, instead we can have this nifty solution:
 
 &nbsp;
 
-> Note: For this solution I am going to add in a few more values just to give you some ideas of what we can do
+> Note: I am going to add in a few more values just to give you some ideas of what we can do
 
 &nbsp;
 
@@ -315,7 +320,7 @@ allprojects {
         config = [
             applicationId : "com.seaplain.android.example.staging.debug",
             versionName : "1.0.0",
-            // Other values, versionCode, compileSdkVersion, buildToolsVersion, etc
+            // Other values: versionCode, compileSdkVersion, buildToolsVersion, etc...
         ]
 
         flavours = [        
@@ -360,11 +365,15 @@ productFlavors {
 
 &nbsp;
 
-**WOAH WAIT!** What just happened there? Things just changed very radically indeed! Now for each unique array in our top level `flavours` we are assigning the name of the array to `name` and the contents to `flavour`. We then create ourselves a flavour **inside the loop** using `name`. Inside this new flavour we use `flavour` to fill the fields.
+**WOAH WAIT!** What just happened there? Things just changed very radically indeed! Lets run through this.
 
 &nbsp;
 
-So what does this mean? Well now in each module's `build.gradle` we can set up this loop, using just the configuration values we need. Then whenever we need a new flavour we can just add a new entry in `flavours` and **without any modification of any other `build.gradle`** our flavour will be set up for us! You can't get much cleaner!
+Now for each unique array in our top level `flavours` we are assigning the name of the array to `name` and the contents to `flavour`. We then use `name` as the name of a brand new flavour. Inside this new flavour we use the values in `flavour` to fill the fields.
+
+&nbsp;
+
+So what does this mean? Well now in each module's `build.gradle` we can set up this loop (using the fields we need). Then whenever we want to create a new flavour we can simply add a new entry in `flavours` **and without any modification of any other `build.gradle` file** our flavour will be set up for us! You can't get much cleaner!
 
 &nbsp;
 
@@ -372,8 +381,8 @@ So what does this mean? Well now in each module's `build.gradle` we can set up t
 
 ## Summary
 
-This has been an area that has bothered me for a long time, and this solution goes a long way to cleaning up our scripts. For larger applications this can remove significant chunks of duplicated code whilst also providing us with increased flexibility and readability. We should all be making the most of what variants and flavours have to offer, they are incredibly powerful tools that are now hopefully one step friendlier.
+This has been an area that has bothered me for a long time, and this solution goes a long way to cleaning up my pains. For larger applications this technique can remove significant chunks of duplicated code whilst also providing us with increased flexibility and readability. We should all be making the most of what variants and flavours have to offer, they are incredibly powerful tools that are now hopefully one step friendlier.
 
 &nbsp;
 
-> A quick final note: I have considered taking this a step further to start sending through the types and names for each field. Or possibly even looping through each flavour once this is in place, thus meaning our module's `build.gradle` files needn't be modified each time we add a new field. In my opinion this is overkill and the headache you will create in dealing with edge cases and unneeded values bleeding across modules etc is simply not worth it.
+> A quick final note: I have considered taking this a step further to start sending through the types and names for each field. Or possibly even looping through each flavour, thus meaning our module's `build.gradle` files also needn't be modified each time we add a new field. In my opinion this is overkill and the headache you will create in dealing with edge cases and unneeded values bleeding across modules etc is simply not worth it.
