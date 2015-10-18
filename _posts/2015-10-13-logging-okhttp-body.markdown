@@ -2,7 +2,7 @@
 layout: post
 title: Getting Your Logs Back In Retrofit 2
 subtitle: Hey I was using those
-tags: Android OkHttp Networking Logging Network Data 
+tags: Android OkHttp Networking Logging Network Data Retrofit
 author: Coby Plain
 res: /assets/2015-10-13-logging-in-okhttp
 ---
