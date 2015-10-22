@@ -5,7 +5,6 @@ subtitle: Still doesn't come in chocolate
 tags: Android Gradle Flavours Variants Versioning
 author: Coby Plain
 res: /assets/2015-10-21-improving-gradle-flavours
-hide: true
 ---
 
 ---
