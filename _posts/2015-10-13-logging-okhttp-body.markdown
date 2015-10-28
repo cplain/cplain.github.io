@@ -303,7 +303,7 @@ private Response trackError(Request request, Response response) {
     String responseBodyString = response.body().string();
     String cause = String.valueOf(response.code());
     final String errorMessage;
-    final Response response;
+    final Response newResponse;
 
     try {
         ErrorResponse errorResponse = mGson.fromJson(responseBodyString, ErrorResponse.class);
@@ -312,13 +312,13 @@ private Response trackError(Request request, Response response) {
         errorMessage = "Unknown error";
     } finally {
         ResponseBody body = ResponseBody.create(response.body().contentType(), responseBodyString);
-        response = response.newBuilder()
+        newResponse = response.newBuilder()
                         .body(body)
                         .build();
     }
 
     trackError(request, cause, errorMessage);
-    return response;
+    return newResponse;
 }
 {% endhighlight %}
 
@@ -391,7 +391,7 @@ public class LoggingInterceptor implements Interceptor {
         String responseBodyString = response.body().string();
         String cause = String.valueOf(response.code());
         final String errorMessage;
-        final Response response;
+        final Response newResponse;
 
         try {
             ErrorResponse errorResponse = mGson.fromJson(responseBodyString, ErrorResponse.class);
@@ -400,13 +400,13 @@ public class LoggingInterceptor implements Interceptor {
             errorMessage = "Unknown error";
         } finally {
             ResponseBody body = ResponseBody.create(response.body().contentType(), responseBodyString);
-            response = response.newBuilder()
+            newResponse = response.newBuilder()
                             .body(body)
                             .build();
         }
 
         trackError(request, cause, errorMessage);
-        return response;
+        return newResponse;
     }
 
     private void trackError(Request request, String cause, String message) {
