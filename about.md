@@ -29,7 +29,7 @@ I love learning new and funky things and want to share everything I can with any
 
 &nbsp;
 
-I'm no web developer but if you want to see how this site is built [you are welcome to view the source here][Github Blog]
+If you want to see how this site is built [you are welcome to view the source here][Github Blog]
 
 
 [Vivant]: http://vivant.com.au/
