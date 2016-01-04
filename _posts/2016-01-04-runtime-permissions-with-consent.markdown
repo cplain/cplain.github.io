@@ -79,3 +79,9 @@ That's all there is! Simple and friendly! You can download it today from jcenter
 compile 'com.seaplain:consent:1.0.1'
 {% endhighlight %}
 
+&nbsp;
+
+and feel free to check out the source on [GitHub][GitHub]
+
+[GitHub]: https://github.com/cplain/consent
+
