@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 res: /assets/about
-brands: ["brand-asuper=https://www.australiansuper.com/", 'brand-carsguide=http://www.carsguide.com.au/', 'brand-commbank=https://www.commbank.com.au/', 'brand-corelogic=http://www.corelogic.com.au/', 'brand-paypal=https://www.paypal.com/', 'brand-quantas=http://www.qantas.com.au/', 'brand-tedx=http://tedxsydney.com/', 'brand-telstra=https://www.telstra.com.au/']
+brands: ["brand-asuper=https://www.australiansuper.com/", 'brand-carsguide=http://www.carsguide.com.au/', 'brand-commbank=https://www.commbank.com.au/', 'brand-corelogic=http://www.corelogic.com.au/', "brand-nhds=http://www.homedoctor.com.au/", 'brand-paypal=https://www.paypal.com/', 'brand-quantas=http://www.qantas.com.au/', 'brand-tedx=http://tedxsydney.com/', 'brand-telstra=https://www.telstra.com.au/']
 ---
 
 Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've been lucky enough to work with some truly fantastic brands including:
