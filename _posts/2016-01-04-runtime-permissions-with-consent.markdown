@@ -4,7 +4,7 @@ title: Runtime Permissions With Consent
 subtitle: I made a library!
 tags: Android Permissions Runtime
 author: Coby Plain
-res: /assets/2015-01-04-runtime-permissions-with-consent
+res: /assets/2016-01-04-runtime-permissions-with-consent
 ---
 
 ---
