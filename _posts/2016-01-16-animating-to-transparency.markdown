@@ -27,7 +27,7 @@ This whole trick is dependant on the value of `Color.TRANSPARENT` (also `android
 
 &nbsp;
 
-Knowing this we have all we need. `Color.TRANSPARENT` has no alpha value, and hence in most cases the rest of the components are irrelvant. But while animating, the `ArgbEvaluator` will be shifting the alpha channel of our starting color towards transparent and it will also be shifting the rest of the components towards `#000000`. For those who haven't caught on, `#000000` is black, and this is where our problem lies. While our animating color is not yet fully transparent, the rest of its channels are being shifted to black.
+Knowing this we have all we need. `Color.TRANSPARENT` has no alpha value, and hence in most cases the rest of the components are irrelvant. But while animating, the `ArgbEvaluator` will be shifting the alpha channel of our starting color towards transparent and it will also be shifting the rest of the components towards `#000000`. For those who haven't caught on, `#000000` is black, and this is where our problem lies. While our animating color is not yet fully transparent, the rest of its channels are being shifted towards black, giving us our undesired visual effect.
 
 &nbsp;
 
@@ -36,8 +36,8 @@ So the solution is simple, if we use our own transparent color, we can control w
 &nbsp;
 
 {% highlight xml %}
-    <color name="starting_color">#7ED321</color>
-    <color name="appropriate_transparent">#007ED321</color>
+<color name="start_color">#7ED321</color>
+<color name="end_color">#007ED321</color>
 {% endhighlight %}
 
 &nbsp;
