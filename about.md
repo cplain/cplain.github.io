@@ -6,7 +6,9 @@ res: /assets/about
 brands: ["brand-asuper=https://www.australiansuper.com/", 'brand-carsguide=http://www.carsguide.com.au/', 'brand-commbank=https://www.commbank.com.au/', 'brand-corelogic=http://www.corelogic.com.au/', "brand-nhds=http://www.homedoctor.com.au/", 'brand-paypal=https://www.paypal.com/', 'brand-quantas=http://www.qantas.com.au/', 'brand-tedx=http://tedxsydney.com/', 'brand-telstra=https://www.telstra.com.au/']
 ---
 
-Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working there I've been lucky enough to work with some truly fantastic brands including:
+Hey my name is Coby and I'm a Senior Android developer on JIRA at [Atlassian][Atlassian]. 
+
+Prior to Atlassian I was working at [Vivant][Vivant] were I was lucky enough to work with some truly fantastic brands including:
 
 &nbsp;  
 
@@ -25,7 +27,7 @@ Hey my name is Coby and I'm an Android developer at [Vivant][Vivant]. Working th
 
 &nbsp;
 
-I love learning new and funky things and want to share everything I can with anyone I can. Hopefully in my time I've come across something you will find useful!
+I love learning new and fun things and want to share everything I can with anyone I can. Hopefully in my time I've come across something you will find useful!
 
 &nbsp;
 
@@ -33,4 +35,5 @@ If you want to see how this site is built [you are welcome to view the source he
 
 
 [Vivant]: http://vivant.com.au/
+[Atlassian]: http://atlassian.com/
 [Github Blog]: https://github.com/cplain/cplain.github.io
